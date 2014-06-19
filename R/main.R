@@ -31,7 +31,7 @@ mex.df = fortify(mex, region = 'NAME_1')
 states <- (mex.df %.% group_by(id) %.% summarize(G1 = group[1]))$G1
 mex.df <- mex.df %.% filter(group %in% states)
 
-Loc    = SpatialPoints(Data[,c("long", "lat")], proj4string=CRS(proj4string(mex)))
+Loc    = SpatialPoints(Data[,c("lat", "long")], proj4string=CRS(proj4string(mex)))
 Loc.RL = over(Loc, mex)
 
 Data$State <- Loc.RL$NAME_1

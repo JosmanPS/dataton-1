@@ -11,7 +11,7 @@ def main():
 				x,y = jline["geo"]["coordinates"]
 				name = jline["user"]["screen_name"]
 				userId = "id" + jline["user"]["id_str"]
-				print userId, ", ", name, ", ", x, ", ", y
+				print userId, ", ", name, ", ", y, ", ", x
 		except:
 			pass
 if __name__ == '__main__':
