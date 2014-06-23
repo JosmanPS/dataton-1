@@ -4,8 +4,8 @@ import urllib2 as urllib
 access_token_key = "Write access_token_key"
 access_token_secret = "Write access_token_secret"
 
-consumer_key = "746LJg1xzBwmdquqeoFLEQ"
-consumer_secret = "BjGnEhTix4r9uOXip3Hr7hw4GdhhiK1yZPjF90vPdBs"
+consumer_key = "Write consumer_key"
+consumer_secret = "Write consumer_secret"
 
 _debug = 0
 

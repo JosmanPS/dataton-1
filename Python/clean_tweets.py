@@ -4,8 +4,8 @@ import json
 def main():
 	tweet_file = open(sys.argv[1])
 	for line in tweet_file:
-		jline = json.loads(line)
 		try:
+			jline = json.loads(line)
 			if jline["place"]["country_code"] == 'MX':
 				text = jline["text"]
 				x,y = jline["geo"]["coordinates"]
