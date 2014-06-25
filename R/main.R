@@ -8,7 +8,7 @@ library(dplyr)
 doInstall <- FALSE  # Change to FALSE if you don't want packages installed.
 toInstall <- c("sp","rgdal", "maptools",
                "ggplot2", "dplyr", "rgeos",
-               "maps", "scales", "raster")
+               "maps", "scales", "raster", "jsonlite")
 if(doInstall){install.packages(toInstall, repos = "http://cran.r-project.org")}
 lapply(toInstall, library, character.only = TRUE)
 
@@ -34,7 +34,7 @@ mex.df <- mex.df %.% filter(group %in% states)
 Loc    = SpatialPoints(Data[,c("lat", "long")], proj4string=CRS(proj4string(mex)))
 Loc.RL = over(Loc, mex)
 
-Data$State <- Loc.RL$NOM_ENT
+Data$State <- Loc.RL$CVE_ENT
 Data = Data %.% filter( Data$State != "<NA>")
 
 Users = Data %.% group_by(user.id) %.% summarise( Estado = names(which.max(table(State))))
@@ -60,3 +60,11 @@ P <- P + theme(axis.title.x = element_blank(),
                panel.grid.minor = element_blank(),
                panel.border = element_blank())
 P
+
+# Sample transition matrix.
+#writeLines(toJSON(n.users), "../Data/nusers.json")
+n.users = Users %.% group_by(Estado) %.% summarise(n = n())
+test = data.frame(matrix(rpois(32*32, 500), nrow=32))
+row.names(test) = n.users$Estado
+names(test) = n.users$Estado
+writeLines(toJSON(test), "../Data/test.json")
