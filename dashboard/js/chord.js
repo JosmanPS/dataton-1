@@ -1,21 +1,3 @@
-<!DOCTYPE html>
-<meta charset="utf-8">
-<style>
-
-body {
-  font: 10px sans-serif;
-}
-
-.chord path {
-  fill-opacity: .67;
-  stroke: #000;
-  stroke-width: .1px;
-}
-
-</style>
-<body>
-<script src="js/d3.v3.min.js"></script>
-<script>
 
 // From http://mkweb.bcgsc.ca/circos/guide/tables/
 var matrix = [];
@@ -26,10 +8,8 @@ for(i = 0; i < 31; i++) {
     rand = Math.floor(Math.random() * 100);
     row.push(rand);
   }
-  console.log(row);
   matrix.push(row);
 }
-console.log(matrix);
 var chord = d3.layout.chord()
     .padding(.05)
     .sortSubgroups(d3.descending)
@@ -42,9 +22,9 @@ var width = 960,
 
 var fill = d3.scale.category20();
 
-var svg = d3.select("body").append("svg")
-    .attr("width", width)
-    .attr("height", height)
+var svg = d3.select("#chord-container").append("svg")
+    .attr("viewBox", "0 0 "+ width + " "+ height)
+    .attr("preserveAspectRatio", "xMinYMin meet")
   .append("g")
     .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
@@ -110,5 +90,3 @@ function fade(opacity) {
         .style("opacity", opacity);
   };
 }
-
-</script>

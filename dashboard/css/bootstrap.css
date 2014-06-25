@@ -4770,6 +4770,7 @@ a.list-group-item-danger.active:focus {
 }
 .panel-body {
   padding: 15px;
+  height: 500px;
 }
 .panel > .list-group {
   margin-bottom: 0;
