@@ -19,22 +19,22 @@ names(Data) <- c("user.id", "name", "lat", "long")
 # Paso 2.
 # Encontrar en que estado se realizo cada tweet.
 
-mex = getData('GADM', country="Mexico", level=1)
+mex = readOGR("../Data/Resultados.geojson", "OGRGeoJSON")
 
 # Quitar acentos
-levels(mex$NAME_1) <- gsub( "\341", "a", levels(mex$NAME_1))
-levels(mex$NAME_1) <- gsub( "\351", "e", levels(mex$NAME_1))
-levels(mex$NAME_1) <- gsub( "\355", "i", levels(mex$NAME_1))
-levels(mex$NAME_1) <- gsub( "\363", "o", levels(mex$NAME_1))
+levels(mex$NOM_ENT) <- gsub( "\341", "a", levels(mex$NOM_ENT))
+levels(mex$NOM_ENT) <- gsub( "\377", "e", levels(mex$NOM_ENT))
+levels(mex$NOM_ENT) <- gsub( "\355", "i", levels(mex$NOM_ENT))
+levels(mex$NOM_ENT) <- gsub( "\363", "o", levels(mex$NOM_ENT))
 
-mex.df = fortify(mex, region = 'NAME_1')
+mex.df = fortify(mex, region = 'CVE_ENT')
 states <- (mex.df %.% group_by(id) %.% summarize(G1 = group[1]))$G1
 mex.df <- mex.df %.% filter(group %in% states)
 
 Loc    = SpatialPoints(Data[,c("lat", "long")], proj4string=CRS(proj4string(mex)))
 Loc.RL = over(Loc, mex)
 
-Data$State <- Loc.RL$NAME_1
+Data$State <- Loc.RL$NOM_ENT
 Data = Data %.% filter( Data$State != "<NA>")
 
 Users = Data %.% group_by(user.id) %.% summarise( Estado = names(which.max(table(State))))
@@ -59,5 +59,4 @@ P <- P + theme(axis.title.x = element_blank(),
                panel.grid.major = element_blank(),
                panel.grid.minor = element_blank(),
                panel.border = element_blank())
-
-ggsave("..Results/Fig/tweets_location.eps", plot = P, device=cairo_ps, dpi = 600, width = 5, height = 4)
+P

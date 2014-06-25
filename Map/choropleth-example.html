@@ -45,7 +45,6 @@
 	
 	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script src="js/leaflet.js"></script>
-	<script type="text/javascript" src="js/mx-states.js"></script>
 	<script type="text/javascript">
 
 
@@ -62,8 +61,23 @@
 		    });
 		    return json;
 		})();*/ 
-
+		
+		var states = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "15"]
 		var map = L.map('map').setView([24, -100], 5);
+
+		var json = (function () {
+		    var json = null;
+		    $.ajax({
+		        'async': false,
+		        'global': false,
+		        'url': "../Data/Resultados.geojson",
+		        'dataType': "json",
+		        'success': function (data) {
+		            json = data;
+		        }
+		    });
+		    return json;
+		})(); 
 
 		L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
 			maxZoom: 18,
@@ -147,40 +161,33 @@
 			info.update();
 		}
 
-		function zoomToFeature(e) {
-			// Aqui se tiene que cambiar la funcion para colorear el mapa diferente segun el click.
-			updateMap();
-		}
-
 		function onEachFeature(feature, layer) {
 			layer.on({
 				mouseover: highlightFeature,
 				mouseout: resetHighlight,
-				click: zoomToFeature
+				click: (function (e) {updateMap(first = false, state_id = feature.properties.CVE_ENT)})
 			});
 		}
 
-		function updateMap(first) {
+		function updateMap(first, state_id) {
 			first = typeof first !== 'undefined' ? first : false;
+			state_id = typeof state_id !== 'undefined' ? state_id : "50";
 			
 			if(!first){
 				map.removeLayer( geojson )
 			}
 
-			$.getJSON("../Data/Resultados.geojson", function(data) {
-
-				function tempStyle(feature){
-					return(style(feature, state_id = "10"))
-				}
-
-			    geojson = L.geoJson(data, {
-			    	style: tempStyle,
-			    	//style: (function (feature) style(feature, state_id = e.CVE_ENT)),
-			      	onEachFeature: onEachFeature
-			    });
-
-			    geojson.addTo(map);
+			function tempStyle(feature){
+				return(style(feature, state_id = state_id))
+			}
+			
+			geojson = L.geoJson(json, {
+				style: tempStyle,
+				onEachFeature: onEachFeature
 			})
+
+			geojson.addTo(map);
+
 		}
 
 		function onMapClick(e) {
