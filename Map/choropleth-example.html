@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Leaflet Layers Control Example</title>
+	<title>Dataton</title>
 	<meta charset="utf-8" />
-
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<link rel="stylesheet" href="css/leaflet.css" />
@@ -43,18 +42,32 @@
 </head>
 <body>
 	<div id="map"></div>
-
+	
+	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script src="js/leaflet.js"></script>
-
 	<script type="text/javascript" src="js/mx-states.js"></script>
 	<script type="text/javascript">
 
-		var map = L.map('map').setView([37.8, -96], 4);
+
+		/*var json = (function () {
+		    var json = null;
+		    $.ajax({
+		        'async': false,
+		        'global': false,
+		        'url': "https://raw.githubusercontent.com/IndigoUnited/spoonjs-sample-app/master/bower.json",
+		        'dataType': "json",
+		        'success': function (data) {
+		            json = data;
+		        }
+		    });
+		    return json;
+		})();*/ 
+
+		var map = L.map('map').setView([24, -100], 5);
 
 		L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
 			maxZoom: 18,
-			attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
-				'<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+			attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> ' +
 				'Imagery © <a href="http://mapbox.com">Mapbox</a>',
 			id: 'examples.map-20v6611k'
 		}).addTo(map);
@@ -70,13 +83,22 @@
 		};
 
 		info.update = function (props) {
-			this._div.innerHTML = '<h4>US Population Density</h4>' +  (props ?
-				'<b>' + props.name + '</b><br />' + props.density + ' people / mi<sup>2</sup>'
-				: 'Hover over a state');
+			this._div.innerHTML = '<h4>Turismo en Mexico</h4>' +  (props ?
+				'<b>' + props.NOM_ENT + '</b><br />' + props.CVE_ENT + ' clave.'
+				: 'Escoge un estado');
 		};
 
 		info.addTo(map);
 
+		function selectScale(id, out_flag, state_id) {
+			out_flag = typeof out_flag !== 'undefined' ? out_flag : true;
+			state_id = typeof state_id !== 'undefined' ? state_id : "50";
+
+			if(out_flag){
+				return id == state_id ? 1005  :
+					                	50;
+			}
+		}
 
 		// get color depending on population density value
 		function getColor(d) {
@@ -90,14 +112,14 @@
 			                  '#FFEDA0';
 		}
 
-		function style(feature) {
+		function style(feature, state_id, out_flag) {
 			return {
 				weight: 2,
 				opacity: 1,
 				color: 'white',
 				dashArray: '3',
 				fillOpacity: 0.7,
-				fillColor: getColor(feature.properties.density)
+				fillColor: getColor(selectScale(feature.properties.CVE_ENT, out_flag = out_flag, state_id = state_id))
 			};
 		}
 
@@ -126,7 +148,8 @@
 		}
 
 		function zoomToFeature(e) {
-			map.fitBounds(e.target.getBounds());
+			// Aqui se tiene que cambiar la funcion para colorear el mapa diferente segun el click.
+			updateMap();
 		}
 
 		function onEachFeature(feature, layer) {
@@ -137,13 +160,39 @@
 			});
 		}
 
-		geojson = L.geoJson(statesData, {
+		function updateMap(first) {
+			first = typeof first !== 'undefined' ? first : false;
+			
+			if(!first){
+				map.removeLayer( geojson )
+			}
+
+			$.getJSON("../Data/Resultados.geojson", function(data) {
+
+				function tempStyle(feature){
+					return(style(feature, state_id = "10"))
+				}
+
+			    geojson = L.geoJson(data, {
+			    	style: tempStyle,
+			    	//style: (function (feature) style(feature, state_id = e.CVE_ENT)),
+			      	onEachFeature: onEachFeature
+			    });
+
+			    geojson.addTo(map);
+			})
+		}
+
+		function onMapClick(e) {
+			updateMap()
+		}
+
+		updateMap(first = true)
+
+		/*geojson = L.geoJson(statesData, {
 			style: style,
 			onEachFeature: onEachFeature
-		}).addTo(map);
-
-		map.attributionControl.addAttribution('Population data &copy; <a href="http://census.gov/">US Census Bureau</a>');
-
+		});*/
 
 		var legend = L.control({position: 'bottomright'});
 
@@ -168,6 +217,7 @@
 		};
 
 		legend.addTo(map);
+		map.on('click', onMapClick);
 
 	</script>
 </body>
