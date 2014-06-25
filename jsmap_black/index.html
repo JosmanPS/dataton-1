@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+.municipalities {
+  fill: #222;
+}
+
+.municipalities :hover {
+  fill: orange;
+}
+
+.state-boundary {
+  fill: none;
+  stroke: #fff;
+  pointer-events: none;
+}
+
+.municipality-boundary {
+  fill: none;
+  stroke: #fff;
+  stroke-opacity: .25;
+  stroke-width: .5px;
+  pointer-events: none;
+}
+
+</style>
+<body>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="http://d3js.org/topojson.v1.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery.svg.js"></script>
+
+
+<script>
+$(function(){
+var width = 960,
+    height = 628;
+
+var path = d3.geo.path()
+    .projection(null);
+
+function affluenceColor(affluence){
+    var d=affluence;
+
+    return d > 1000 ? '#800026' :
+           d > 500  ? '#BD0026' :
+           d > 200  ? '#E31A1C' :
+           d > 100  ? '#FC4E2A' :
+           d > 50   ? '#FD8D3C' :
+           d > 20   ? '#FEB24C' :
+           d > 10   ? '#FED976' :
+                      '#FFEDA0';
+}
+
+function fillState(state_id, affluence){
+    var color = affluenceColor(affluence);
+    $("path[state_id = '" + state_id + "']").css("fill", color);
+}
+
+var getid = function() {
+
+
+    // ====== ====== ====== ====== ====== ====== ====== ====== ====== ====== ====== ====== ======
+    // En json va un arreglo de jsons donde el json i es el vector de afluencias al estado i+1
+    // en el vector es "cve_estado":afluencia
+
+    var json = '[{"25":400, "1":300, "5":5000, "30":700},{"25":100, "1":30, "5":50, "30":1100}]';
+
+    obj = JSON.parse(json)[1]; // en vez de 1 es this.getAttribute('state_id');
+
+    // ====== ====== ====== ====== ====== ====== ====== ====== ====== ====== ====== ====== ======
+    // ====== ====== ====== ====== ====== ====== ====== ====== ====== ====== ====== ====== ======
+
+
+    for (i=1; i <= 32; i++){
+        if(typeof obj[i] !== 'undefined'){
+            fillState(i, obj[i]);
+        }
+    }
+
+}
+
+//$('#container').svg();
+var svg = d3.select("div#container").append("svg")
+    .attr("width", width)
+    .attr("height", height);
+
+d3.json("Entidades_2013.json", function(error, mx) {
+  svg.append("g")
+      .attr("class", "municipalities")
+    .selectAll("path")
+      .data(topojson.feature(mx, mx.objects.states).features)
+    .enter().append("path")
+      .attr("d", path)
+      .attr("state_id", function(d){ return d.properties.state; })
+      .on('click', getid)
+    .append("title")
+      .text(function(d){ return d.properties.state; })
+
+});
+
+d3.select(self.frameElement).style("height", height + "px");
+
+//$("#container svg path").bind('click', function() {alert('path');})
+
+});
+</script>
+<div id="container"></div>
+
+<div class="info legend leaflet-control"><i style="background:#FFEDA0"></i> 0–10<br><i style="background:#FED976"></i> 10–20<br><i style="background:#FEB24C"></i> 20–50<br><i style="background:#FD8D3C"></i> 50–100<br><i style="background:#FC4E2A"></i> 100–200<br><i style="background:#E31A1C"></i> 200–500<br><i style="background:#BD0026"></i> 500–1000<br><i style="background:#800026"></i> 1000+</div>
+
+<span id="content">
+
+</span>
