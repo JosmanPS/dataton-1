@@ -26,7 +26,7 @@ var svg_bar = d3.select("#bar_bar_chart").append("svg")
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-d3.tsv("../Data/state_0.tsv", type, function(error, data) {
+d3.tsv("Data/state_0.tsv", type, function(error, data) {
   x.domain(data.map(function(d) { return d.estado; }));
   y.domain([0, d3.max(data, function(d) { return d.visitas; })]);
 
