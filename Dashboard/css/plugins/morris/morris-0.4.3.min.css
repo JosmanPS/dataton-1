@@ -155,3 +155,26 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, 
     margin-right: 8px;
     opacity: 0.7;
 }
+
+.bar {
+  fill: steelblue;
+}
+
+.bar:hover {
+  fill: brown;
+}
+
+.axis {
+  font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.x.axis path {
+  display: none;
+}
