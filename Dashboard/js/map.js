@@ -127,7 +127,11 @@ function draw_map() {
     layer.on({
       mouseover: highlightFeature,
       mouseout: resetHighlight,
-      click: (function (e) {updateMap(first = false, state_id = feature.properties.CVE_ENT)})
+      click: (function (e) {
+        updateMap(first = false, state_id = feature.properties.CVE_ENT);
+        $('#bar_bar_chart svg').remove();
+        createchart( "Data/state_" + String(parseInt(state_id) - 1) + ".tsv" );
+        })
     });
   }
 

@@ -62,18 +62,18 @@ cves= {'01': 'Ags',
 
 for cve in cves.iterkeys():
 #for cve in ['01']:
-	i = int(cve) - 1
+    i = int(cve) - 1
 	
-	curr = pn.DataFrame(data[i])
+    curr = data[i]
 
 
-	fw = open('state_{0}.tsv'.format(str(i)), 'w')
+    fw = open('state_{0}.tsv'.format(str(i)), 'w')
 
-	fw.write("estado	visitas" + "\n")
+    fw.write("estado	visitas" + "\n")
 
-	for j in data[i].iterkeys():
-		fw.write(cves[j] + "\t" + str(curr[j]) + "\n")
-	fw.close()
+    for j in data[i].iterkeys():
+        fw.write(cves[j] + "\t" + str(curr[j]) + "\n")
+    fw.close()
 
 
 
