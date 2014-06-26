@@ -1,2 +1,119 @@
 .morris-hover{position:absolute;z-index:1000;}.morris-hover.morris-default-style{border-radius:10px;padding:6px;color:#666;background:rgba(255, 255, 255, 0.8);border:solid 2px rgba(230, 230, 230, 0.8);font-family:sans-serif;font-size:12px;text-align:center;}.morris-hover.morris-default-style .morris-hover-row-label{font-weight:bold;margin:0.25em 0;}
 .morris-hover.morris-default-style .morris-hover-point{white-space:nowrap;margin:0.1em 0;}
+.icon-linkedin:before {
+    content: "";
+}
+.team-member .social-icons {
+    margin-bottom: 25px;
+}
+.our-team {
+    color: #808080;
+    font-family: 'Lato',sans-serif !important;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 25px;
+    text-align: center;
+    background: none repeat scroll 0 0 #ffffff;
+    padding-bottom: 66px;
+    padding-top: 100px;
+}
+.section-header h2 {
+    display: inline-block;
+    line-height: 40px;
+    padding-bottom: 10px;
+    position: relative;
+}
+.dark-text {
+    color: #404040;
+}
+.team-member {
+    border-radius: 4px;
+    margin-bottom: 35px;
+    overflow: hidden;
+    position: relative;
+}
+
+.team-member .profile-pic {
+    border-radius: 50%;
+    height: 174px;
+    margin: auto auto 25px;
+    overflow: hidden;
+    width: 174px;
+}
+
+.team-member .member-details {
+    display: inline-block;
+    padding-bottom: 5px;
+    position: relative;
+}
+.red-border-bottom:before {
+    background: none repeat scroll 0 0 #e96656;
+    bottom: -9px;
+    content: "";
+    height: 2px;
+    left: 12.5%;
+    margin: auto;
+    position: absolute;
+    width: 75%;
+    z-index: 1;
+}
+.green-border-bottom:before {
+    background: none repeat scroll 0 0 #34d293;
+    bottom: -9px;
+    content: "";
+    height: 2px;
+    left: 12.5%;
+    margin: auto;
+    position: absolute;
+    width: 75%;
+    z-index: 1;
+}
+
+.blue-border-bottom:before {
+    background: none repeat scroll 0 0 #3ab0e2;
+    bottom: -9px;
+    content: "";
+    height: 2px;
+    left: 12.5%;
+    margin: auto;
+    position: absolute;
+    width: 75%;
+    z-index: 1;
+}
+.yellow-border-bottom:before {
+    background: none repeat scroll 0 0 #f7d861;
+    bottom: -9px;
+    content: "";
+    height: 2px;
+    left: 12.5%;
+    margin: auto;
+    position: absolute;
+    width: 75%;
+    z-index: 1;
+}
+.team-member .profile-pic img {
+    height: 100%;
+    width: 100%;
+}
+.team-member h5 {
+    color: #404040;
+    font-weight: 700;
+    position: relative;
+    text-transform: uppercase;
+}
+.team-member .position {
+    font-size: 13px;
+    margin-top: 15px;
+}
+.team-member .social-icons {
+    margin-bottom: 25px;
+}
+img {
+    vertical-align: middle;
+}
+img {
+    border: 0 none;
+}
+article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, section, summary {
+    display: block;
+}
