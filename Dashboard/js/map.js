@@ -68,13 +68,13 @@ function draw_map() {
 
   // get color depending on population density value
   function getColor(d) {
-    return d > .50  ? '#800026' :
-           d > .40  ? '#BD0026' :
-           d > .30  ? '#E31A1C' :
-           d > .20  ? '#FC4E2A' :
-           d > .15  ? '#FD8D3C' :
-           d > .10  ? '#FEB24C' :
-           d > .05  ? '#FED976' :
+    return d > .25  ? '#800026' :
+           d > .20  ? '#BD0026' :
+           d > .15  ? '#E31A1C' :
+           d > .10  ? '#FC4E2A' :
+           d > .05  ? '#FD8D3C' :
+           d > .02  ? '#FEB24C' :
+           d > .01  ? '#FED976' :
                       '#FFEDA0';
   }
 
@@ -172,7 +172,7 @@ function draw_map() {
   legend.onAdd = function (map) {
 
     var div = L.DomUtil.create('div', 'info legend'),
-      grades = [0, 10, 20, 50, 100, 200, 500, 1000],
+      grades = [0,0.01, .02, .05, .10, .15, .20, .25],
       labels = [],
       from, to;
 
@@ -181,8 +181,8 @@ function draw_map() {
       to = grades[i + 1];
 
       labels.push(
-        '<i style="background:' + getColor(from + 1) + '"></i> ' +
-        from + (to ? '&ndash;' + to : '+'));
+        '<i style="background:' + getColor(from + .001) + '"></i> ' +
+        from.toFixed(2) + (to ? '&ndash;' + to.toFixed(2) : '+'));
     }
 
     div.innerHTML = labels.join('<br>');
