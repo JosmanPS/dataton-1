@@ -18,10 +18,11 @@ var yAxis = d3.svg.axis()
     .ticks(10, "");
 
 var svg_bar = d3.select("#bar_bar_chart").append("svg")
-    .attr("viewBox", "0 0 "+ width + " "+ height)
+    .attr("viewBox", "0 0 "+ (width + margin.left + margin.right) + " "
+          + (height+ margin.top + margin.bottom))
     .attr("preserveAspectRatio", "xMinYMin meet")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
+    // .attr("width", width + margin.left + margin.right)
+    // .attr("height", height + margin.top + margin.bottom)
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 

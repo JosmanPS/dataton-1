@@ -22,15 +22,11 @@ var matrix = [];
 json.forEach(function(state){
   row = [];
   for (var i in state){
-    console.log(i)
-    console.log(state[i])
     row.push(state[i]);
   }
   matrix.push(row);
 });
 
-console.log(matrix);
-// console.log(matrix)
 var chord = d3.layout.chord()
     .padding(.05)
     .sortSubgroups(d3.descending)
@@ -68,6 +64,22 @@ var ticks = svg.append("g").selectAll("g")
           + "translate(" + outerRadius + ",0)";
     });
 
+// var g = svg.selectAll("g.group")
+//       .data(chord.groups)
+//     .enter().append("svg:g")
+//       .attr("class", "group")
+
+// g.append("svg:text")
+//       .each(function(d) { d.angle = (d.startAngle + d.endAngle) / 2; })
+//       .attr("dy", ".35em")
+//       .attr("text-anchor", function(d) { return d.angle > Math.PI ? "end" : null; })
+//       .attr("transform", function(d) {
+//         return "rotate(" + (d.angle * 180 / Math.PI - 90) + ")"
+//             + "translate(" + (r0 + 26) + ")"
+//             + (d.angle > Math.PI ? "rotate(180)" : "");
+//       })
+//       .text(function(d) { return nameByIndex[d.index]; });
+
 ticks.append("line")
     .attr("x1", 1)
     .attr("y1", 0)
@@ -90,6 +102,8 @@ svg.append("g")
     .attr("d", d3.svg.chord().radius(innerRadius))
     .style("fill", function(d) { return fill(d.target.index); })
     .style("opacity", 1);
+  
+
 
 // Returns an array of tick angles and labels, given a group.
 function groupTicks(d) {
