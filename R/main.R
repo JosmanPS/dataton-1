@@ -95,6 +95,14 @@ Entran = colSums(Trans)
 Locales$Salen = Salen
 Locales$Entran = Entran
 
+Salen = data.frame(lapply(Trans, function(X) round(X/rowSums(Trans),2)))
+Entran = data.frame(lapply(Trans, function(X) round(X/sum(X),2)))
+names(Salen) = names(Trans)
+names(Entran) = names(Trans)
+
 writeLines(toJSON(Trans), "../Dashboard/Data/transicion.json")
 writeLines(toJSON(Locales), "../Dashboard/Data/resumen.json")
+writeLines(toJSON(Entran), "../Dashboard/Data/entran.json")
+writeLines(toJSON(Salen), "../Dashboard/Data/salen.json")
+writeLines(toJSON(Salen), "../Dashboard/Data/resumen.json")
 
