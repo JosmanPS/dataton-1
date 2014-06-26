@@ -32,7 +32,7 @@ var chord = d3.layout.chord()
     .sortSubgroups(d3.descending)
     .matrix(matrix);
 
-var width = 960,
+var width = 500,
     height = 500,
     innerRadius = Math.min(width, height) * .35,
     outerRadius = innerRadius * 1.1;
