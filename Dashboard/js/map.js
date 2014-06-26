@@ -81,7 +81,7 @@ function draw_map() {
   function style(feature, state_id, out_flag) {
     if (state_id === "-1"){
       return {
-        weight: 2,
+        weight: 1,
         opacity: 1,
         color: 'white',
         dashArray: '3',
@@ -90,7 +90,7 @@ function draw_map() {
       };
     }
     return {
-      weight: 2,
+      weight: 1,
       opacity: 1,
       color: 'white',
       dashArray: '3',
@@ -103,7 +103,7 @@ function draw_map() {
     var layer = e.target;
 
     layer.setStyle({
-      weight: 5,
+      weight: 2,
       color: '#666',
       dashArray: '',
       fillOpacity: 0.7
