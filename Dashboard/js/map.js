@@ -15,7 +15,6 @@ function draw_map() {
       });
       return json;
   })(); 
-
   var json = (function () {
       var json = null;
       $.ajax({

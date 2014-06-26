@@ -178,3 +178,9 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, 
 .x.axis path {
   display: none;
 }
+
+.chord path {
+  fill-opacity: .67;
+  stroke: #000;
+  stroke-width: .025px;
+}
