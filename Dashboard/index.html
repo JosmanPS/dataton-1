@@ -20,6 +20,40 @@
     <link href="css/sb-admin.css" rel="stylesheet">
     <link href="css/leaflet.css" rel="stylesheet">
     
+    <!-- BAR_CHART -->
+    <!-- ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== -->
+    <!-- ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== -->
+
+    <style>
+
+
+        .bar {
+          fill: steelblue;
+        }
+
+        .bar:hover {
+          fill: brown;
+        }
+
+        .axis {
+          font: 10px sans-serif;
+        }
+
+        .axis path,
+        .axis line {
+          fill: none;
+          stroke: #000;
+          shape-rendering: crispEdges;
+        }
+
+        .x.axis path {
+          display: none;
+        }
+
+    </style>
+    <!-- ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== -->
+    <!-- ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== -->
+
 </head>
 
 <body>
@@ -363,19 +397,34 @@
 
             </div>
             <div class="row">
-                <section id="team" class="our-team">
-                    <div class="container">
-                        
-                        <!-- SECTION HEADER -->
-                        <div class="section-header">
-                            
-                            <!-- SECTION TITLE -->
-                            <h2 class="dark-text">Nuestro Equipo</h2>
-                            
-                            <!-- SHORT DESCRIPTION ABOUT THE SECTION -->
-                            <h6>
-                                Equipo de deep river venture
-                            </h6>
+<section id="team" class="our-team">
+    <div class="container">
+        
+        <!-- SECTION HEADER -->
+        <div class="section-header">
+            
+            <!-- SECTION TITLE -->
+            <h2 class="dark-text">Nuestro Equipo</h2>
+            
+            <!-- SHORT DESCRIPTION ABOUT THE SECTION -->
+            <h6>
+                Equipo de deep river venture
+            </h6>
+        </div>
+        <!-- / END SECTION HEADER -->
+        
+        <!-- TEAM MEMBERS -->
+        <div data-wow-delay="0.15s" data-wow-duration="3s" data-wow-offset="40" class="row wow fadeInRight animated animated" style="visibility: visible;-webkit-animation-duration: 3s; -moz-animation-duration: 3s; animation-duration: 3s;-webkit-animation-delay: 0.15s; -moz-animation-delay: 0.15s; animation-delay: 0.15s;">
+            <!-- MEMBER -->
+            <div class="col-lg-3 col-sm-3">
+                <div class="team-member">
+                    <figure class="profile-pic"> 
+                    <img alt="" src="images/team/jaime.jpg"> <!-- MEMBER PROFILE PIC -->
+                    </figure>
+                    <div class="member-details">
+                        <h5 class="dark-text red-border-bottom">José Manuel Rodríguez Sotelo</h5>
+                        <div class="position">
+                            Investigador en formación
                         </div>
                         <!-- / END SECTION HEADER -->
                         
