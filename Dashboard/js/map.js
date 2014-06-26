@@ -16,6 +16,20 @@ function draw_map() {
       return json;
   })(); 
 
+  var resumen = (function () {
+      var json = null;
+      $.ajax({
+          'async': false,
+          'global': false,
+          'url': "Data/resumen.json",
+          'dataType': "json",
+          'success': function (data) {
+              json = data;
+          }
+      });
+      return json;
+  })(); 
+
   var json = (function () {
       var json = null;
       $.ajax({
@@ -50,7 +64,9 @@ function draw_map() {
 
   info.update = function (props) {
     this._div.innerHTML = '<h4>Turismo en Mexico</h4>' +  (props ?
-      '<b>' + props.NOM_ENT + '</b><br />' + props.CVE_ENT + ' clave.'
+      '<b>' + props.NOM_ENT + '</b><br />' +  
+      'Salieron: ' + resumen[parseInt(props.CVE_ENT)-1].Salen + '</b><br />' +
+      'Llegaron: ' + resumen[parseInt(props.CVE_ENT)-1].Entran
       : 'Escoge un estado');
   };
 
@@ -182,7 +198,7 @@ function draw_map() {
 
       labels.push(
         '<i style="background:' + getColor(from + .001) + '"></i> ' +
-        from.toFixed(2) + (to ? '&ndash;' + to.toFixed(2) : '+'));
+        100*from + '%' + (to ? '&ndash;' + 100*to + '%' : '+'));
     }
 
     div.innerHTML = labels.join('<br>');
