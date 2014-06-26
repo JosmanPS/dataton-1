@@ -141,6 +141,16 @@
 		}
 
 		function style(feature, state_id, out_flag) {
+			if (state_id === "-1"){
+				return {
+					weight: 2,
+					opacity: 1,
+					color: 'white',
+					dashArray: '3',
+					fillOpacity: 0.7,
+					fillColor: '#FFEDA0'
+				};
+			}
 			return {
 				weight: 2,
 				opacity: 1,
@@ -185,7 +195,7 @@
 
 		function updateMap(first, state_id) {
 			first = typeof first !== 'undefined' ? first : false;
-			state_id = typeof state_id !== 'undefined' ? state_id : "10";
+			state_id = typeof state_id !== 'undefined' ? state_id : "-1";
 			
 			if(!first){
 				map.removeLayer( geojson )
