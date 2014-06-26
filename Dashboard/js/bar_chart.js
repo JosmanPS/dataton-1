@@ -1,5 +1,5 @@
-var margin = {top: 20, right: 20, bottom: 30, left: 40},
-    width = 800 - margin.left - margin.right,
+var margin = {top: 20, right: 20, bottom: 30, left: 28},
+    width = 770 - margin.left - margin.right,
     height = 600 - margin.top - margin.bottom;
 
 var x = d3.scale.ordinal()
@@ -15,7 +15,7 @@ var xAxis = d3.svg.axis()
 var yAxis = d3.svg.axis()
     .scale(y)
     .orient("left")
-    .ticks(10, "%");
+    .ticks(10, "");
 
 var svg_bar = d3.select("#bar_bar_chart").append("svg")
     .attr("viewBox", "0 0 "+ width + " "+ height)
@@ -42,7 +42,7 @@ d3.tsv("../Data/state_0.tsv", type, function(error, data) {
       .attr("y", 6)
       .attr("dy", ".71em")
       .style("text-anchor", "end")
-      .text("Frequency");
+      .text("Visitantes");
 
   svg_bar.selectAll(".bar")
       .data(data)
