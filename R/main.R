@@ -1,6 +1,7 @@
 rm(list = ls())
 
 library(dplyr)
+library(reshape2)
 
 # Paso 1
 # Paquetes requeridos.
@@ -68,3 +69,40 @@ Users = Data %.% group_by(user.id) %.% summarise( Estado = names(which.max(table
 # row.names(test) = n.users$Estado
 # names(test) = n.users$Estado
 # writeLines(toJSON(test), "../Data/test.json")
+
+load("Data/origen.Rdata")
+load("Data/destino.Rdata")
+
+Trans = merge(Origen, Destino, by = c("user.id"))
+names(Trans) = c("user.id", "Origen", "Destino")
+Trans = Trans %.% group_by(Origen, Destino) %.% summarise(n = n())
+Trans = dcast(Trans, Origen ~ Destino, value.var = "n", fill = 0)
+row.names(Trans) = Trans$Origen
+Trans = subset(Trans, select=-Origen)
+
+Locales = numeric()
+for(i in 1:32)
+{
+    Locales[i] = Trans[i,i]
+    Trans[i,i] = 0
+}
+Locales = as.data.frame(Locales)
+row.names(Locales) = row.names(Trans)
+
+Salen = rowSums(Trans)
+Entran = colSums(Trans)
+
+Locales$Salen = Salen
+Locales$Entran = Entran
+
+Salen = data.frame(lapply(Trans, function(X) round(X/rowSums(Trans),2)))
+Entran = data.frame(lapply(Trans, function(X) round(X/sum(X),2)))
+names(Salen) = names(Trans)
+names(Entran) = names(Trans)
+
+writeLines(toJSON(Trans), "../Dashboard/Data/transicion.json")
+writeLines(toJSON(Locales), "../Dashboard/Data/resumen.json")
+writeLines(toJSON(Entran), "../Dashboard/Data/entran.json")
+writeLines(toJSON(Salen), "../Dashboard/Data/salen.json")
+writeLines(toJSON(Salen), "../Dashboard/Data/resumen.json")
+

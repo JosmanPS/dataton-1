@@ -7,7 +7,21 @@ function draw_map() {
       $.ajax({
           'async': false,
           'global': false,
-          'url': "Data/test.json",
+          'url': "Data/salen.json",
+          'dataType': "json",
+          'success': function (data) {
+              json = data;
+          }
+      });
+      return json;
+  })(); 
+
+  var resumen = (function () {
+      var json = null;
+      $.ajax({
+          'async': false,
+          'global': false,
+          'url': "Data/resumen.json",
           'dataType': "json",
           'success': function (data) {
               json = data;
@@ -49,7 +63,9 @@ function draw_map() {
 
   info.update = function (props) {
     this._div.innerHTML = '<h4>Turismo en Mexico</h4>' +  (props ?
-      '<b>' + props.NOM_ENT + '</b><br />' + props.CVE_ENT + ' clave.'
+      '<b>' + props.NOM_ENT + '</b><br />' +  
+      'Salieron: ' + resumen[parseInt(props.CVE_ENT)-1].Salen + '</b><br />' +
+      'Llegaron: ' + resumen[parseInt(props.CVE_ENT)-1].Entran
       : 'Escoge un estado');
   };
 
@@ -67,13 +83,13 @@ function draw_map() {
 
   // get color depending on population density value
   function getColor(d) {
-    return d > 1000 ? '#800026' :
-           d > 500  ? '#BD0026' :
-           d > 200  ? '#E31A1C' :
-           d > 100  ? '#FC4E2A' :
-           d > 50   ? '#FD8D3C' :
-           d > 20   ? '#FEB24C' :
-           d > 10   ? '#FED976' :
+    return d > .25  ? '#800026' :
+           d > .20  ? '#BD0026' :
+           d > .15  ? '#E31A1C' :
+           d > .10  ? '#FC4E2A' :
+           d > .05  ? '#FD8D3C' :
+           d > .02  ? '#FEB24C' :
+           d > .01  ? '#FED976' :
                       '#FFEDA0';
   }
 
@@ -126,7 +142,11 @@ function draw_map() {
     layer.on({
       mouseover: highlightFeature,
       mouseout: resetHighlight,
-      click: (function (e) {updateMap(first = false, state_id = feature.properties.CVE_ENT)})
+      click: (function (e) {
+        updateMap(first = false, state_id = feature.properties.CVE_ENT);
+        $('#bar_bar_chart svg').remove();
+        createchart( "Data/state_" + String(parseInt(state_id) - 1) + ".tsv" );
+        })
     });
   }
 
@@ -167,7 +187,7 @@ function draw_map() {
   legend.onAdd = function (map) {
 
     var div = L.DomUtil.create('div', 'info legend'),
-      grades = [0, 10, 20, 50, 100, 200, 500, 1000],
+      grades = [0,0.01, .02, .05, .10, .15, .20, .25],
       labels = [],
       from, to;
 
@@ -176,8 +196,8 @@ function draw_map() {
       to = grades[i + 1];
 
       labels.push(
-        '<i style="background:' + getColor(from + 1) + '"></i> ' +
-        from + (to ? '&ndash;' + to : '+'));
+        '<i style="background:' + getColor(from + .001) + '"></i> ' +
+        100*from + '%' + (to ? '&ndash;' + 100*to + '%' : '+'));
     }
 
     div.innerHTML = labels.join('<br>');
