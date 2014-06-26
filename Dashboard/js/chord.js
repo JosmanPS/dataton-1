@@ -1,4 +1,4 @@
-d3.json("../Data/test.json", function(json) {
+d3.json("Data/test.json", function(json) {
 // From http://mkweb.bcgsc.ca/circos/guide/tables/
 var matrix = [];
 

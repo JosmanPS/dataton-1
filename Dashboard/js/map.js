@@ -7,7 +7,7 @@ function draw_map() {
       $.ajax({
           'async': false,
           'global': false,
-          'url': "../Data/test.json",
+          'url': "Data/test.json",
           'dataType': "json",
           'success': function (data) {
               json = data;
@@ -21,7 +21,7 @@ function draw_map() {
       $.ajax({
           'async': false,
           'global': false,
-          'url': "../Data/Resultados.geojson",
+          'url': "Data/Resultados.geojson",
           'dataType': "json",
           'success': function (data) {
               json = data;
