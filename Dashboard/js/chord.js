@@ -1,4 +1,4 @@
-d3.json("Data/test.json", function(json) {
+d3.json("Data/transicion.json", function(json) {
   // From http://mkweb.bcgsc.ca/circos/guide/tables/
   
   var keys_json = (function () {
@@ -86,7 +86,8 @@ d3.json("Data/test.json", function(json) {
             + "translate(" + (outerRadius + 26) + ")"
             + (d.angle > Math.PI ? "rotate(180)" : "");
       })
-      .text(function(d,i) { return keys_list[i].name; });
+      .text(function(d,i) { return keys_list[i].name; })
+      .attr("class", "labels-text");
 //////////////
   ticks.append("line")
         .attr("x1", 1)
@@ -100,7 +101,8 @@ d3.json("Data/test.json", function(json) {
       .attr("dy", ".35em")
       .attr("transform", function(d) { return d.angle > Math.PI ? "rotate(180)translate(-16)" : null; })
       .style("text-anchor", function(d) { return d.angle > Math.PI ? "end" : null; })
-      .text(function(d) { return d.label; });
+      .text(function(d) { return d.label; })
+      .attr("class", "ticks-text");
 
   svg.append("g")
       .attr("class", "chord")
