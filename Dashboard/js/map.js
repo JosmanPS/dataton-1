@@ -307,16 +307,16 @@ function draw_map2() {
 
   // get color depending on population density value
   function getColor(d) {
-    return d > .25  ? '#800026' :
-           d > .20  ? '#BD0026' :
-           d > .15  ? '#E31A1C' :
-           d > .10  ? '#FC4E2A' :
-           d > .05  ? '#FD8D3C' :
-           d > .02  ? '#FEB24C' :
-           d > .01  ? '#FED976' :
-                      '#FFEDA0';
-  }
+    return d > .25  ? "#084594" :
+           d > .20  ? "#2171b5" :
+           d > .15  ? "#4292c6" :
+           d > .10  ? "#6baed6" :
+           d > .05  ? "#9ecae1" :
+           d > .02  ? "#c6dbef" :
+           d > .01  ? "#deebf7" :
+                      "#f7fbff";
 
+  }
   function style(feature, state_id, out_flag) {
     if (state_id === "-1"){
       return {
@@ -325,7 +325,7 @@ function draw_map2() {
         color: 'white',
         dashArray: '3',
         fillOpacity: 0.7,
-        fillColor: '#FFEDA0'
+        fillColor: "#9ecae1"
       };
     }
     return {
@@ -368,7 +368,7 @@ function draw_map2() {
       mouseout: resetHighlight,
       click: (function (e) {
         updateMap(first = false, state_id = feature.properties.CVE_ENT);
-        $('#bar_bar_chart svg').remove();
+        $('#bar_bar_chart2 svg').remove();
 
 
 
@@ -379,7 +379,7 @@ function draw_map2() {
         // AQUI PONER EL ARCHIVO QUE SE LEERA Y LLAMAR A OTRO CREATECHART QUE CREE LA SEGUNDA GRAFICA
         // CREATECHART ESTA EN BAR_CHART.JS
         //
-        createchart( "Data/state_" + String(parseInt(state_id) - 1) + ".tsv" );
+        createchart2( "Data/state_" + String(parseInt(state_id) - 1) + ".tsv" );
         // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
