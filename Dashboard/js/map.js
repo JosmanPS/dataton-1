@@ -182,7 +182,7 @@ function draw_map() {
     onEachFeature: onEachFeature
   });*/
 
-  var legend = L.control({position: 'bottomright'});
+  var legend = L.control({position: 'bottomleft'});
 
   legend.onAdd = function (map) {
 
