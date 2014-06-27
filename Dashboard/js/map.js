@@ -231,7 +231,7 @@ function draw_map2() {
       $.ajax({
           'async': false,
           'global': false,
-          'url': "Data/salen.json",
+          'url': "Data/entran.json",
           'dataType': "json",
           'success': function (data) {
               json = data;
@@ -301,7 +301,7 @@ function draw_map2() {
 
     if(out_flag){
 
-      return transition[parseInt(state_id)-1][id]
+      return transition[parseInt(id)-1][state_id]
     }
   }
 
