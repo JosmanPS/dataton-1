@@ -143,14 +143,14 @@
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body" style="height:550;padding-left: 15px;">
-                            <p class="lead"> Con base en la información de tuits geolocalizados provenientes de Public Streams de Twitter (30 mil tuits), se filtraron los tuits a ser utilizados en el análisis de la siguiente manera:
+                            <p class="lead"> Con base en la información de tuits geolocalizados provenientes de Public Streams de Twitter (2 millones de tuits), se filtraron los tuits a ser utilizados en el análisis de la siguiente manera:
                             </p>
                             <ul>
                                 <li><p class="lead">Filtrado con base en coordenadas para seleccionar únicamente tuits provenientes de México</p></li>
                                 <li><p class="lead">Selección de tuits escritos entre el 1° de Marzo 2014 y el 30 de Junio 2014</p></li>
                             </ul>
                             <p class="lead">
-                            Una vez teniendo la base filtrada, se clasificó a los tuiteros como turista o no turista de la siguiente forma: se tomó como estado de origen de la persona la procedencia de los tuits en marzo, si la ubicación difería para el mes de junio, entonces se clasificó a la persona como turista. Se seleccionaron particularmente estos dos meses dado que junio marca el inicio de vacaciones de verano. Con esto se llegó a una base de 7,500 turistas.  
+                            Una vez teniendo la base filtrada, se clasificó a los tuiteros como turista o no turista de la siguiente forma: se tomó como estado de origen de la persona la procedencia de los tuits en marzo, si la ubicación difería para el mes de junio, entonces se clasificó a la persona como turista. Se seleccionaron particularmente estos dos meses dado que junio marca el inicio de vacaciones de verano. Con esto se llegó a una base de 7,500 turistas de los 30,000 tuiteros.  
                             </p>
                             <p class="lead"> Posteriormente, la información de los “turistas” se utilizó en dos análisis principales:    
                             </p>
@@ -164,15 +164,44 @@
                 </div>
             </div>
 
-
-            <div class="row">
+           <div class="row">
                 <div class="col-lg-7 col-md-7">
-                    <div class="panel panel-default map-panel" id="map-container2">
+                    <div class="panel panel-default" id="map-container">
+                        <div class="panel-heading">
+                            <i class="fa fa-bar-chart-o fa-fw"></i> A dónde van los turistas en México.
+                        </div>
+                        <!-- /.panel-heading -->
+
+                        <div class="panel-body" style="height:550;padding-left: 5px; padding-bottom: 5px; padding-top: 5px; ">
+
+                            <div id="map"></div>
+                            <p class="lead">Esta herramienta permite entender de forma visual a dónde van los turistas de cada estado. Al hacer click en algún estado, el mapa colorea el resto de los estados según el número de turistas que viajan del estado seleccionado a las otras entidades del país. De la misma forma, el histograma del lado derecho muestra el número de turistas que viajan a cada estado.</p>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+
+                </div>
+                <div class="col-lg-5 col-md-5" style="margin-left:-25px">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-bar-chart-o fa-fw"></i> Frecuencias
+                        </div>
+                        <div class="panel-body" style="height:520px;padding-left: 0px;overflow: auto;">
+                            <div id="bar_bar_chart"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+           <div class="row">
+                <div class="col-lg-7 col-md-7">
+                    <div class="panel panel-default" id="map-container2">
                         <div class="panel-heading">
                             <i class="fa fa-bar-chart-o fa-fw"></i> De dónde vienen los turistas en México.
                         </div>
                         <!-- /.panel-heading -->
-                        <div class="panel-body" style="height:550;padding-left: 5px; padding-bottom: 5px; padding-top: 5px;">
+                        <div class="panel-body" style="height:550;padding-left: 5px; padding-bottom: 5px; padding-top: 5px; ">
+
                             <div id="map2"></div>
                             <p class="lead">Esta herramienta permite entender de forma visual de dónde provienen los turistas de cada estado. Al hacer click en algún estado, el mapa colorea el resto de los estados según el número de turistas que viajan al estado seleccionado. De la misma forma, el histograma del lado derecho muestra el número de turistas procedentes de cada estado.</p>
 
@@ -190,6 +219,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="row">
                 <div class="col-lg-offset-3 col-md-offset-3 col-lg-6 col-md-6">
                    <div class="panel panel-default">
