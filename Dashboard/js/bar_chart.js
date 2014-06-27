@@ -1,7 +1,7 @@
 createchart = function(filename){
 
 var margin = {top: 20, right: 20, bottom: 30, left: 28},
-    width = 800 - margin.left - margin.right,
+    width = 1000 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
 
 var x = d3.scale.ordinal()
