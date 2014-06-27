@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dataton 2014: Análisis del Turismo en México</title>
+
+    <!-- Core CSS - Include with every page -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+
+    <!-- Page-Level Plugin CSS - Dashboard -->
+    <link href="css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet">
+    <link href="css/plugins/timeline/timeline.css" rel="stylesheet">
+
+    <!-- SB Admin CSS - Include with every page -->
+    <link href="css/sb-admin.css" rel="stylesheet">
+    <link href="css/leaflet.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <div id="wrapper">
+        <nav class="navbar navbar-inverse  navbar-fixed-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!-- <img src="images/logo-chafa.png" href="index.html" border="0"> </img> -->
+                <a class="navbar-brand" href="index.html">DRV</a>
+            </div>
+
+
+            <!-- /.navbar-static-side -->
+        </nav>
+
+        <!-- div id="page-wrapper"> -->
+        <div class="col-lg-12 col-md-12">
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+                    <h1 class="page-header">Dataton 2014: Análisis del Turismo en México.</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+                    <div class="panel panel-default" >
+                        <div class="panel-heading">
+                            <i class="fa fa-comments fa-fw"></i> Turismo en México
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body" style="height:550;padding-left: 15px;">
+                            <p class="lead"> Análisis del flujo de turistas nacionales en México y análisis de sentimiento  utilizando tuits geolocalizados con dos objetivos principales:
+                            </p>
+                            <ul>
+                                <li><p class="lead">Conocer los flujos turísticos a nivel nacional (procedencia y destino)</p></li>
+                                <li><p class="lead">Entender la experiencia de los vacacionistas en sus destinos turísticos</p></li>
+                            </ul>
+
+
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-7 col-md-7">
+                    <div class="panel panel-default" id="map-container">
+                        <div class="panel-heading">
+                            <i class="fa fa-bar-chart-o fa-fw"></i> A dónde van los turistas en México.
+                        </div>
+                        <!-- /.panel-heading -->
+
+                        <div class="panel-body" style="height:550;padding-left: 5px; padding-bottom: 5px; padding-top: 5px;; ">
+
+                            <div id="map"></div>
+
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                </div>
+                <div class="col-lg-5 col-md-5" style="margin-left:-25px">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-bar-chart-o fa-fw"></i> Frecuecias
+                        </div>
+                        <div class="panel-body" style="height:350;pxpadding-left: 0px;">
+                            <div id="bar_bar_chart"></div>
+                        </div>
+                    </div>
+
+                    <!-- NUEVO -->
+                    <!-- ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== =====  -->
+                    <div class="panel panel-default map-panel" id="map-container">
+                        <div class="panel-heading">
+                            <i class="fa fa-bar-chart-o fa-fw"></i> De dónde vienen los turistas en México.
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body" style="height:600;padding-left: 0px;">
+                            <div id="map2"></div>
+
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== =====  -->
+                    <!-- ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== =====  -->
+
+                    <!-- /.panel -->
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-md-6">
+                   <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-bar-chart-o fa-fw"></i> Chord Diagram
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-12" id="chord-container">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6" style="margin-left:-25px">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-bar-chart-o fa-fw"></i> Frecuecias
+                        </div>
+
+                        <!-- <div class="panel-body" style="height:350;pxpadding-left: 0px;">
+                            <div id="bar_bar_chart"></div> -->
+
+                        </div>
+                    </div>
+<<<<<<< HEAD
+
+                    <!-- NUEVO -->
+                    <!-- ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== =====  -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-bar-chart-o fa-fw"></i> Frecuecias
+                        </div>
+                        <div class="panel-body" style="height:600;pxpadding-left: 0px;">
+                            <div id="bar_bar_chart2" style="height:500px"></div>
+
+
+                        </div>
+                    </div>
+                    <!-- ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== =====  -->
+                    <!-- ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== =====  -->
+
+                </div>
+                <!-- /.col-lg-4 -->
+
+=======
+                </div>
+>>>>>>> f774cd3ff95965539be9a46bcfe0a6d30c03d780
+            </div>
+
+            <div class="row">
+                <section id="team" class="our-team">
+                    <div class="container">
+
+                        <!-- SECTION HEADER -->
+                        <div class="section-header">
+
+                            <!-- SECTION TITLE -->
+                            <h2 class="dark-text">Equipo</h2>
+
+                        </div>
+                        <!-- / END SECTION HEADER -->
+
+                        <!-- TEAM MEMBERS -->
+                        <div data-wow-delay="0.15s" data-wow-duration="3s" data-wow-offset="40" class="row wow fadeInRight animated animated" style="visibility: visible;-webkit-animation-duration: 3s; -moz-animation-duration: 3s; animation-duration: 3s;-webkit-animation-delay: 0.15s; -moz-animation-delay: 0.15s; animation-delay: 0.15s;">
+                            <!-- MEMBER -->
+                            <div class="col-lg-3 col-md-6">
+                                <div class="team-member">
+                                    <figure class="profile-pic">
+                                    <img alt="" src="images/team/jaime.jpg"> <!-- MEMBER PROFILE PIC -->
+                                    </figure>
+                                    <div class="member-details">
+                                        <h5 class="dark-text red-border-bottom">José Manuel Rodríguez Sotelo</h5>
+                                        <div class="position">
+                                            Analista de Datos
+                                        </div>
+                                    </div>
+                                    <div class="social-icons">
+                                        <ul>
+                                            <li><a href="https://twitter.com/jimsotelo"><i class="fa fa-twitter" target="_blank"></i></a></li>
+                                            <li><a href="https://www.linkedin.com/profile/view?id=181540252" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+                                            <li><a href="https://github.com/jimsotelo"><i class="fa fa fa-github" target="_blank"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- / END MEMBER -->
+
+                            <div class="col-lg-3 col-md-6">
+                                <div class="team-member">
+                                    <figure class="profile-pic">
+                                    <img alt="" src="images/team/vila.jpg">
+                                    </figure>
+                                    <div class="member-details">
+                                        <h5 class="dark-text green-border-bottom">Carlos Espino García</h5>
+                                        <div class="position">
+                                          Análisis Estadístico
+                                        </div>
+                                    </div>
+                                    <div class="social-icons">
+                                        <ul>
+                                            <li><a href="https://twitter.com/carlos_e11" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                                            <li><a href="https://www.linkedin.com/profile/view?id=105754498" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+                                            <li><a href="https://github.com/carlosespino11" target="_blank"><i class="fa fa fa-github"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-md-6">
+                                <div class="team-member">
+                                    <figure class="profile-pic">
+                                    <img alt="" src="images/team/poi.jpg">
+                                    </figure>
+                                    <div class="member-details">
+                                        <h5 class="dark-text blue-border-bottom">Oscar Cuéllar Nevares</h5>
+                                        <div class="position">
+                                          Análisis Predictivo
+                                        </div>
+                                    </div>
+                                    <div class="social-icons">
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-md-6">
+                                <div class="team-member">
+                                    <figure class="profile-pic">
+                                    <img alt="" src="images/team/nico.jpg">
+                                    </figure>
+                                    <div class="member-details">
+                                        <h5 class="dark-text yellow-border-bottom">Nicolás Hoyo Ríos</h5>
+                                        <div class="position">
+                                            Optimización
+                                        </div>
+                                    </div>
+                                    <div class="social-icons">
+                                        <ul>
+                                            <li><a href=""><i class="fa fa-twitter"></i></a></li>
+                                            <li><a href=""><i class="fa fa-linkedin"></i></a></li>
+                                            <li><a href=""><i class="fa fa fa-github"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-md-6">
+                                <div class="team-member">
+                                    <figure class="profile-pic">
+                                    <img alt="" src="images/team/ray.jpg">
+                                    </figure>
+                                    <div class="member-details">
+                                        <h5 class="dark-text red-border-bottom">Raúl Delgado Sánchez</h5>
+                                        <div class="position">
+                                            Científico de Datos
+                                        </div>
+                                    </div>
+                                    <div class="social-icons">
+                                        <ul>
+                                            <li><a href=""><i class="fa fa-twitter"></i></a></li>
+                                            <li><a href=""><i class="fa fa-linkedin"></i></a></li>
+                                            <li><a href=""><i class="fa fa fa-github"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-md-6">
+                                <div class="team-member">
+                                    <figure class="profile-pic">
+                                    <img alt="" src="images/team/ame.jpg">
+                                    </figure>
+                                    <div class="member-details">
+                                        <h5 class="dark-text green-border-bottom">Amelia Lemionet Escanero</h5>
+                                        <div class="position">
+                                            Análisis de Negocios
+                                        </div>
+                                    </div>
+                                    <div class="social-icons">
+                                        <ul>
+                                            <li><a href=""><i class="fa fa-twitter"></i></a></li>
+                                            <li><a href=""><i class="fa fa-linkedin"></i></a></li>
+                                            <li><a href=""><i class="fa fa fa-github"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-md-6">
+                                <div class="team-member">
+                                    <figure class="profile-pic">
+                                    <img alt="" src="images/team/quique.jpg">
+                                    </figure>
+                                    <div class="member-details">
+                                        <h5 class="dark-text blue-border-bottom">Enrique Lelo de Larrea</h5>
+                                        <div class="position">
+                                            Minería de Datos
+                                        </div>
+                                    </div>
+                                    <div class="social-icons">
+                                        <ul>
+                                            <li><a href=""><i class="fa fa-twitter"></i></a></li>
+                                            <li><a href=""><i class="fa fa-linkedin"></i></a></li>
+                                            <li><a href=""><i class="fa fa fa-github"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-md-6">
+                                <div class="team-member">
+                                    <figure class="profile-pic">
+                                    <img alt="" src="images/team/colmi.jpg">
+                                    </figure>
+                                    <div class="member-details">
+                                        <h5 class="dark-text yellow-border-bottom">Oscar Ortega Moreno</h5>
+                                        <div class="position">
+                                            Matemáticas Aplicadas
+                                        </div>
+                                    </div>
+                                    <div class="social-icons">
+                                        <ul>
+                                            <li><a href=""><i class="fa fa-twitter"></i></a></li>
+                                            <li><a href=""><i class="fa fa-linkedin"></i></a></li>
+                                            <li><a href=""><i class="fa fa fa-github"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> <!-- / END TEAM MEMBER LIST -->
+                    </div> <!-- / END CONTAINER -->
+                </section>
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- Core Scripts - Include with every page -->
+    <script src="js/d3.v3.min.js"></script>
+    <script type="text/javascript" src="js/nvd3.js"></script>
+    <script src="js/jquery-1.10.2.js"></script>
+    <script src="js/leaflet.js"></script>
+
+    <script src="js/chord.js"></script>
+    <script type="text/javascript" src="js/bar_chart.js"></script>
+    <script type="text/javascript" src="js/map.js"></script>
+
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+
+    <!-- Page-Level Plugin Scripts - Dashboard -->
+    <script src="js/plugins/morris/raphael-2.1.0.min.js"></script>
+    <script src="js/plugins/morris/morris.js"></script>
+
+    <!-- SB Admin Scripts - Include with every page -->
+    <script src="js/sb-admin.js"></script>
+
+    <!-- Page-Level Demo Scripts - Dashboard - Use for reference -->
+    <script src="js/demo/dashboard-demo.js"></script>
+
+</body>
+
+</html>
