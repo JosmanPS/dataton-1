@@ -52,11 +52,11 @@
                 <div class="col-lg-12 col-md-12">
                     <div class="panel panel-default" >
                         <div class="panel-heading">
-                            <i class="fa fa-comments fa-fw"></i> Turismo en México
+                            <i class="fa fa-comments fa-fw"></i> Tema de investigación
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body" style="height:550;padding-left: 15px;">
-                            <p class="lead"> Análisis del flujo de turistas nacionales en México y análisis de sentimiento  utilizando tuits geolocalizados con dos objetivos principales:
+                            <p class="lead"> El turismo es uno de los pilares de la economía en nuestro país. Representa el 8.5% del PIB, y es la tercera actividad que genera más ingresos (después de la actividad petrolera y manufacturera) en México. Con esto en mente, se realizó un análisis del flujo de turistas nacionales dentro del país y un análisis de sentimiento  utilizando tuits geolocalizados con dos objetivos principales:
                             </p>
                             <ul>
                                 <li><p class="lead">Conocer los flujos turísticos a nivel nacional (procedencia y destino)</p></li>
@@ -69,6 +69,71 @@
                     </div>
                 </div>
             </div>
+
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+                    <div class="panel panel-default" >
+                        <div class="panel-heading">
+                            <i class="fa fa-comments fa-fw"></i> Relevancia de la investigación
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body" style="height:550;padding-left: 15px;">
+                            <p class="lead"> El turismo es uno de los pilares de la economía en nuestro país. Representa el 8.5% del PIB, y es la tercera actividad que genera más ingresos (después de la actividad petrolera y manufacturera) en México. En palabras del presidente de la Federación de Asociaciones de Empresarios Hoteleros Iberoamericana, Armando de la Cruz Uribe, este año  el turista nacional, principalmente el de negocios, será el que mantendrá activo a esta industria, ya que aportará el 80 por ciento de la afluencia a los diferentes destinos del país. En este sentido, entender la dinámica de los flujos turísticos dentro del territorio nacional es de vital importancia. Las herramientas de análisis estadístico de bases de datos que aquí se proponen, serán de gran ayuda a la hora de planear políticas públicas en materia de turismo y  campos relacionados, como lo son infraestructura, mejoramiento y creación  de transporte (y rutas de transporte), y desarrollo del comercio local.
+                            </p>
+                           
+
+                            
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+                    <div class="panel panel-default" >
+                        <div class="panel-heading">
+                            <i class="fa fa-comments fa-fw"></i> Breve síntesis metodológica
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body" style="height:550;padding-left: 15px;">
+                            <p class="lead"> Con base en la información de tuits geolocalizados provenientes de Public Streams de Twitter (30 mil tuits), se filtraron los tuits a ser utilizados en el análisis de la siguiente manera:
+                            </p>
+                            <ul>
+                                <li><p class="lead">Filtrado con base en coordenadas para seleccionar únicamente tuits provenientes de México</p></li>
+                                <li><p class="lead">Selección de tuits escritos entre el 1° de Marzo 2014 y el 30 de Junio 2014</p></li>
+                            </ul>
+                            <p class="lead">
+                            Una vez teniendo la base filtrada, se clasificó a los tuiteros como turista o no turista de la siguiente forma: se tomó como estado de origen de la persona la procedencia de los tuits en marzo, si la ubicación difería para el mes de junio, entonces se clasificó a la persona como turista. Se seleccionaron particularmente estos dos meses dado que junio marca el inicio de vacaciones de verano. Con esto se llegó a una base de 7,500 turistas.  
+                            </p>
+                            <p class="lead"> Posteriormente, la información de los “turistas” se utilizó en dos análisis principales:    
+                            </p>
+                            <ul>
+                                <li><p class="lead">Creación de matriz de transición casa-vacaciones para conocer la procedencia y destino de la persona, y entender de esta forma cómo es el flujo de turistas a nivel nacional</p></li>
+                                <li><p class="lead">Análisis de sentimiento para entender la experiencia de las personas en sus destinos turísticos</p></li>
+                            </ul>                           
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+                    <div class="panel panel-default" >
+                        <div class="panel-heading">
+                            <i class="fa fa-comments fa-fw"></i> Resumen de resultados
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body" style="height:550;padding-left: 15px;">
+                            <p class="lead"> texto
+                            </p>          
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                </div>
+            </div>
+
             <div class="row">
                 <div class="col-lg-7 col-md-7">
                     <div class="panel panel-default" id="map-container">
@@ -80,7 +145,7 @@
                         <div class="panel-body" style="height:550;padding-left: 5px; padding-bottom: 5px; padding-top: 5px; ">
 
                             <div id="map"></div>
-
+                            <p class="lead">Esta herramienta permite entender de forma visual a dónde van los turistas de cada estado. Al hacer click en algún estado, el mapa colorea el resto de los estados según el número de turistas que viajan del estado seleccionado a las otras entidades del país. De la misma forma, el histograma del lado derecho muestra el número de turistas que viajan a cada estado.</p>
                         </div>
                         <!-- /.panel-body -->
                     </div>
@@ -94,6 +159,7 @@
                         <!-- /.panel-heading -->
                         <div class="panel-body" style="height:550;padding-left: 5px; padding-bottom: 5px; padding-top: 5px;">
                             <div id="map2"></div>
+                            <p class="lead">Esta herramienta permite entender de forma visual de dónde provienen los turistas de cada estado. Al hacer click en algún estado, el mapa colorea el resto de los estados según el número de turistas que viajan al estado seleccionado. De la misma forma, el histograma del lado derecho muestra el número de turistas procedentes de cada estado.</p>
 
                         </div>
                         <!-- /.panel-body -->
@@ -123,6 +189,7 @@
                             <div id="bar_bar_chart2" style="height:500px"></div>
 
 
+
                         </div>
                     </div>
                     <!-- ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== =====  -->
@@ -143,6 +210,7 @@
                                 <div class="col-lg-12" id="chord-container">
                            
                                 </div>
+                                <p class="lead">El diagrama de cuerdas mostrado es una representación del flujo de turistas dentro del país. Al poner el cursor sobre la banda de color correspondiente a algún estado, se resaltan tanto los flujos de turistas cuyo destino es el estado en cuestión como los turistas cuyo estado origen es el seleccionado. Las cuerdas resaltadas del mismo color al estado seleccionado muestra a que estados viajan los habitantes del estado, mientras que las cuerdas resaltadas de otros colores muestran los estados de procedencia de los turistas.</p>
                             </div>
                         </div>
                     </div>                
@@ -167,6 +235,58 @@
                 </div>            
 
             </div>
+
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+                    <div class="panel panel-default" >
+                        <div class="panel-heading">
+                            <i class="fa fa-comments fa-fw"></i> Potencial de impacto
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body" style="height:550;padding-left: 15px;">
+                            <p class="lead"> Los resultados del análisis pueden ser utilizados a nivel estatal, regional e incluso nacional para:
+                            </p>
+                            <ul>
+                                <li><p class="lead"></p>Destinar recursos de forma eficiente en campañas publicitarias turísticas al enfocarlas en audiencias relevantes
+                                    <ul>
+                                        <li><p class="lead"></p> Entender mancuernas de zonas origen-destino de turistas para fomentar los destinos preferidos en ciertos orígenes
+                                        </li>
+                                        <li><p class="lead"></p> Fomentar destinos poco conocidos en zonas cercanas que podrían tener potencial de exportar turistas
+                                        </li>
+                                        <li><p class="lead"></p> Fomentar turismo local en áreas que son dependientes de éste para su sustento
+                                        </li>
+                                    </ul> 
+                                </li>
+                                <li><p class="lead"></p>Dar atención especial a áreas con fuerte potencial turístico que no esté siendo explotado (zonas con poca afluencia turística pero muy buenas experiencias de los pocos turistas que las visitan)
+                                </li>
+                                <li><p class="lead"></p>Fomentar el turismo nacional e internacional al asegurar una mejor experiencia turística en las destinaciones importantes
+                                    <ul>
+                                        <li><p class="lead"></p> Utilizar análisis de sentimientos para detectar áreas de oportunidad y  destinar recursos humanos y monetarios en mejorarlas
+                                    </ul> 
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+                    <div class="panel panel-default" >
+                        <div class="panel-heading">
+                            <i class="fa fa-comments fa-fw"></i> Fuentes
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body" style="height:550;padding-left: 15px;">
+                            <p class="lead"> Moguel, Yoisi. Actividad turística de México no crecerá en 2014 [en línea]. El financiero.Mérida, Yucatán.  25-02-2014. Disponible en Internet: http://www.elfinanciero.com.mx/economia/actividad-turistica-de-mexico-no-crecera-en-2014.html
+                            </p>                           
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                </div>
+            </div>
+
 
             <div class="row">
                 <section id="team" class="our-team">
