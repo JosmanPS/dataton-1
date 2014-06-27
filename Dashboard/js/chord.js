@@ -83,7 +83,7 @@ d3.json("Data/transicion.json", function(json) {
       .attr("text-anchor", function(d) { return d.angle > Math.PI ? "end" : null; })
       .attr("transform", function(d) {
         return "rotate(" + (d.angle * 180 / Math.PI - 90) + ")"
-            + "translate(" + (outerRadius + 26) + ")"
+            + "translate(" + (outerRadius + 30) + ")"
             + (d.angle > Math.PI ? "rotate(180)" : "");
       })
       .text(function(d,i) { return keys_list[i].name; })
@@ -111,17 +111,18 @@ d3.json("Data/transicion.json", function(json) {
     .enter().append("path")
       .attr("d", d3.svg.chord().radius(innerRadius))
       .style("fill", function(d) { return fill(d.target.index); })
-      .style("opacity", 1);
+      .style("opacity", 1)
+
     
 
 
   // Returns an array of tick angles and labels, given a group.
   function groupTicks(d) {
     var k = (d.endAngle - d.startAngle) / d.value;
-    return d3.range(0, d.value, 1000).map(function(v, i) {
+    return d3.range(0, d.value, 100).map(function(v, i) {
       return {
         angle: v * k + d.startAngle,
-        label: i % 2 ? null : v / 1000 + "k"
+        label: i % 2.5 ? null : v
       };
     });
   }

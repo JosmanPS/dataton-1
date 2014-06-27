@@ -185,5 +185,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, 
   stroke-width: .025px;
 }
 .ticks-text{
-
+  font-size: 11px;
+}
+.labels-text{
+  font-weight: bold;
 }
