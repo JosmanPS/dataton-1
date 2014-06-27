@@ -48,6 +48,7 @@ function draw_map() {
 
   L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
     maxZoom: 18,
+    minZoom: 5,
     attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> ' +
       'Imagery © <a href="http://mapbox.com">Mapbox</a>',
     id: 'examples.map-20v6611k'
@@ -269,6 +270,7 @@ function draw_map2() {
 
   L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
     maxZoom: 18,
+    minZoom: 5,
     attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> ' +
       'Imagery © <a href="http://mapbox.com">Mapbox</a>',
     id: 'examples.map-20v6611k'
