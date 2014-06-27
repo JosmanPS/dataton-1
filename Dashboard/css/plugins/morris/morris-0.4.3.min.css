@@ -127,7 +127,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, 
 
 #map {
     width: 650px;
-    height: 500px;
+    height: 510px;
 }
 
 .info {
@@ -137,6 +137,10 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, 
     background: rgba(255,255,255,0.8);
     box-shadow: 0 0 15px rgba(0,0,0,0.2);
     border-radius: 5px;
+    left: 0px;
+}
+.leaflet-control-zoom {
+    left: 0px;
 }
 .info h4 {
     margin: 0 0 5px;
