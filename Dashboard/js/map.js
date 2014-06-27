@@ -148,7 +148,7 @@ function draw_map() {
       click: (function (e) {
         updateMap(first = false, state_id = feature.properties.CVE_ENT);
         $('#bar_bar_chart svg').remove();
-        createchart( "Data/state_" + String(parseInt(state_id) - 1) + ".tsv" );
+        createchart( "Data/out_state_" + String(parseInt(state_id) - 1) + ".tsv" );
         })
     });
   }
@@ -379,7 +379,7 @@ function draw_map2() {
         // AQUI PONER EL ARCHIVO QUE SE LEERA Y LLAMAR A OTRO CREATECHART QUE CREE LA SEGUNDA GRAFICA
         // CREATECHART ESTA EN BAR_CHART.JS
         //
-        createchart2( "Data/state_" + String(parseInt(state_id) - 1) + ".tsv" );
+        createchart2( "Data/in_state_" + String(parseInt(state_id) - 1) + ".tsv" );
         // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!

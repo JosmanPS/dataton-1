@@ -4,10 +4,6 @@ import pandas as pn
 
 #cd Documents/dataton/dataton/Dashboard/Data
 
-filen = 'test.json'
-fhandle = open(filen)
-data = json.load(fhandle)
-
 
 def state(num):
     fr = open('Resultados.geojson','r')
@@ -23,7 +19,6 @@ def state(num):
         final[cve] = noment
 
     return final
-
 
 
 cves= {'01': 'Ags',
@@ -60,6 +55,13 @@ cves= {'01': 'Ags',
 '32': 'Zac'}
 
 
+# SALEN
+# ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== 
+
+filen = 'salen.json'
+fhandle = open(filen)
+data = json.load(fhandle)
+
 for cve in cves.iterkeys():
     #for cve in ['01']:
     i = int(cve) - 1
@@ -67,7 +69,7 @@ for cve in cves.iterkeys():
     curr = data[i]
 
 
-    fw = open('state_{0}.tsv'.format(str(i)), 'w')
+    fw = open('out_state_{0}.tsv'.format(str(i)), 'w')
 
     fw.write("estado	visitas" + "\n")
 
@@ -75,6 +77,34 @@ for cve in cves.iterkeys():
         if int(j) - 1 != i:
             fw.write(cves[j] + "\t" + str(curr[j]) + "\n")
     fw.close()
+
+# ENTRAN
+# ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== 
+
+filen = 'entran.json'
+fhandle = open(filen)
+data = json.load(fhandle)
+
+for cve in cves.iterkeys():
+    #for cve in ['01']:
+    i = int(cve) - 1
+
+    curr = data[i]
+
+
+    fw = open('in_state_{0}.tsv'.format(str(i)), 'w')
+
+    fw.write("estado	visitas" + "\n")
+
+    for j in data[i].iterkeys():
+        if int(j) - 1 != i:
+            fw.write(cves[j] + "\t" + str(curr[j]) + "\n")
+    fw.close()
+
+
+
+
+
 
 
 
