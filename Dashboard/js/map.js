@@ -1,4 +1,7 @@
 function draw_map() {
+  var h = $("#map-container").width();
+  var offSet=8;
+  $("#map").css("width", (h-offSet));
   var states = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "15"]
   var map = L.map('map').setView([24, -100], 5);
 
@@ -211,7 +214,6 @@ draw_map()
 
 $(window).resize(function(){
   var h = $("#map-container").width();
-  var offSet=5;
-  $mc = $("#map");
-  $mc.css("width", (h-offSet));
+  var offSet=8;
+  $("#map").css("width", (h-offSet));
 }).resize();
