@@ -208,3 +208,10 @@ function draw_map() {
   map.on('click', onMapClick);
 }
 draw_map()
+
+$(window).resize(function(){
+  var h = $("#map-container").width();
+  var offSet=5;
+  $mc = $("#map");
+  $mc.css("width", (h-offSet));
+}).resize();

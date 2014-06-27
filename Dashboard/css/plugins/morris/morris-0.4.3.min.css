@@ -126,7 +126,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, 
 
 
 #map {
-    width: 700px;
+    width: 650px;
     height: 500px;
 }
 
@@ -183,4 +183,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, 
   fill-opacity: .67;
   stroke: #000;
   stroke-width: .025px;
+}
+.ticks-text{
+
 }
