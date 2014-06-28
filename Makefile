@@ -9,7 +9,7 @@ Results/Data/coordinates.csv: Python/score_tweets.py Results/Data/tweets.txt Res
 	python Python/score_tweets.py Results/Data/tweets.txt Results/Data/dictionary.txt > Results/Data/coordinates.csv
 
 Results/Data/dictionary.txt: Python/train_dictionary.py Results/Data/origin.txt Results/Data/spaSent1.txt
-	head -n 10000 Results/Data/origin.txt > Results/Data/tweets.train
+	head -n 10000 Results/Data/origen.txt > Results/Data/tweets.train
 	python Python/train_dictionary.py Results/Data/tweets.train Results/Data/spaSent2.txt > Results/Data/dictionary.txt
 	rm Results/Data/tweets.train
 
@@ -17,8 +17,7 @@ Results/Data/tweets.txt: Python/collect.py
 	python Python/collect.py > Results/Data/tweets.txt
 
 Results/Data/spaSent2.txt: Results/Data/spaSent.txt Python/translate_scores.py
-	python Python/translate_scores.py Results/Data/engSent.txt Results/Data/spaSent.txt > Results/Data/spaSent2.txt
-
+	Python/strip_accents.pyc
 Results/Data/spaSent.txt: Results/Data/engSent.txt Python/goslate.py 
 	awk '{print $1}' Results/Data/engSent.txt | xargs -L1 echo | python Python/goslate.py -t ES > Results/Data/spaSent.txt
 
