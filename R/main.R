@@ -10,14 +10,10 @@ toInstall <- c("sp","rgdal", "maptools",
 if(doInstall){install.packages(toInstall, repos = "http://cran.r-project.org")}
 lapply(toInstall, library, character.only = TRUE)
 
-Origen.file = "Data/origen.csv"
-Destino.file = "Data/destino.csv"
+filename = "Data/tweets.csv"
 
-Origen = read.csv(Origen.file, header = FALSE, strip.white = TRUE, as.is = TRUE)
-Destino = read.csv(Destino.file, header = FALSE, strip.white = TRUE, as.is = TRUE)
-
-names(Origen) <- c("user.id", "name", "lat", "long")
-names(Destino) <- c("user.id", "name", "lat", "long")
+Data = read.csv(filename, header = FALSE, strip.white = TRUE, as.is = TRUE)
+names(Data) <- c("user.id", "lat", "long", "score")
 
 # Paso 2.
 # Encontrar en que estado se realizo cada tweet.
@@ -34,20 +30,19 @@ mex.df = fortify(mex, region = 'CVE_ENT')
 states <- (mex.df %.% group_by(id) %.% summarize(G1 = group[1]))$G1
 mex.df <- mex.df %.% filter(group %in% states)
 
-Origen.Loc = SpatialPoints(Origen[,c("lat", "long")], proj4string=CRS(proj4string(mex)))
-Destino.Loc = SpatialPoints(Destino[,c("lat", "long")], proj4string=CRS(proj4string(mex)))
+Data = Data[complete.cases(Data),]
+Data = as.data.frame(Data %.% group_by(user.id) %.% filter(n()>10))
 
-Origen.Loc.RL = over(Origen.Loc, mex)
-Destino.Loc.RL = over(Destino.Loc, mex)
+Loc = SpatialPoints(Data[,c("lat", "long")], proj4string=CRS(proj4string(mex)))
+Loc.RL = over(Loc, mex)
 
-Origen$State <- Origen.Loc.RL$CVE_ENT
-Destino$State <- Destino.Loc.RL$CVE_ENT
+Data$State <- Loc.RL$CVE_ENT
 
-Origen = Origen %.% filter( Origen$State != "<NA>")
-Destino = Destino %.% filter( Destino$State != "<NA>")
+Data = Data %.% filter( Data$State != "<NA>")
 
-Origen.Persona = Origen %.% group_by(user.id) %.% summarise( Estado = names(which.max(table(State))))
-Destino.Persona = Destino %.% group_by(user.id) %.% summarise( Estado = names(which.max(table(State))))
+Origen = Data %.% group_by(user.id) %.% summarise( Estado = names(which.max(table(State))))
+Destino = Data %.% group_by(user.id) %.% filter( State != names(which.max(table(State))))
+Destino = Destino %.% ungroup() %.% group_by(user.id, State) %.% summarise()
 
 # Step 5.
 # Tweets' location map.
@@ -79,7 +74,7 @@ Destino.Persona = Destino %.% group_by(user.id) %.% summarise( Estado = names(wh
 # names(test) = n.users$Estado
 # writeLines(toJSON(test), "../Data/test.json")
 
-Trans = merge(Origen.Persona, Destino.Persona, by = c("user.id"))
+Trans = merge(Origen, Destino, by = c("user.id"))
 names(Trans) = c("user.id", "Origen", "Destino")
 Trans = Trans %.% group_by(Origen, Destino) %.% summarise(n = n())
 Trans = dcast(Trans, Origen ~ Destino, value.var = "n", fill = 0)
@@ -92,6 +87,8 @@ for(i in 1:32)
     Locales[i] = Trans[i,i]
     Trans[i,i] = 0
 }
+Trans["09","15"] = 0
+Trans["15","09"] = 0
 Locales = as.data.frame(Locales)
 row.names(Locales) = row.names(Trans)
 
@@ -110,7 +107,6 @@ writeLines(toJSON(Trans), "../Dashboard/Data/transicion.json")
 writeLines(toJSON(Locales), "../Dashboard/Data/resumen.json")
 writeLines(toJSON(Entran), "../Dashboard/Data/entran.json")
 writeLines(toJSON(Salen), "../Dashboard/Data/salen.json")
-writeLines(toJSON(Salen), "../Dashboard/Data/resumen.json")
 
  # Analisis de Sentimientos
 calificarEstados =  function(Data)

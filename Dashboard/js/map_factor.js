@@ -1,6 +1,6 @@
 
 
-function draw_map(map_no, pre_fix_file_detailed, pre_fix_file_total, chartfunction) {
+function draw_map(map_no, pre_fix_file_detailed, pre_fix_file_total, chartfunction, colors, color_scale) {
   var h = $("#map-container" + String(map_no)).width();
   var offSet=8;
   $("#map" + String(map_no)).css("width", (h-offSet));
@@ -116,16 +116,18 @@ function draw_map(map_no, pre_fix_file_detailed, pre_fix_file_total, chartfuncti
 
   // get color depending on population density value
   function getColor(d) {
-    return d > .25  ? "#084594" :
-           d > .20  ? "#2171b5" :
-           d > .15  ? "#4292c6" :
-           d > .10  ? "#6baed6" :
-           d > .05  ? "#9ecae1" :
-           d > .02  ? "#c6dbef" :
-           d > .01  ? "#deebf7" :
-                      "#f7fbff";
+
+    return d > color_scale[6]  ? colors[7] :
+           d > color_scale[5]  ? colors[6] :
+           d > color_scale[4]  ? colors[5] :
+           d > color_scale[3]  ? colors[4] :
+           d > color_scale[2]  ? colors[3] :
+           d > color_scale[1]  ? colors[2] :
+           d > color_scale[0]  ? colors[1] :
+                      colors[0];
 
   }
+
   function style(feature, state_id, out_flag) {
     if (state_id === "-1"){
       return {
@@ -255,12 +257,17 @@ function draw_map(map_no, pre_fix_file_detailed, pre_fix_file_total, chartfuncti
  // el primer argumento es para apuntar los ids al mapa y a los contenedores
  // el segundo es el prefijo del archivo del que se sacan los datos, p.ej uno sería out_state_0.tsv, es el de las salidas del estado 0
  // el tercero es donde estan los totales, (entran o salen)
+color_scale_tour = [.01, .02, .05, .1, .15, .2, .25]
+color_scale_sent =  [.125, .25, .375, .50, .625, .75]
 
-draw_map("","out_state_","salen_total",createchart);
-draw_map("2","in_state_","entran_total",createchart2);
-draw_map("3","in_state_","entran_total",createchart);
-draw_map("4","in_state_","entran_total",createchart2);
-draw_map("5","in_state_","entran_total",createchart);
+colors1 = ["#f7fbff","#deebf7","#c6dbef","#9ecae1","#6baed6","#4292c6","#2171b5","#084594"];
+colors2 = ["#ffffcc","#ffeda0","#fed976","#feb24c","#fd8d3c","#fc4e2a","#e31a1c","#b10026"];
+colors3 = ["#d73027","#f46d43","#fdae61","#fee08b","#d9ef8b","#a6d96a","#66bd63","#1a9850"];
+draw_map("","out_state_","salen_total",createchart, colors1, color_scale_tour);
+draw_map("2","in_state_","entran_total",createchart2,colors2, color_scale_tour);
+draw_map("3","in_state_","entran_total",createchart2,colors3, color_scale_sent);
+draw_map("4","in_state_","entran_total",createchart,colors1, color_scale_tour);
+draw_map("5","in_state_","entran_total",createchart,colors1, color_scale_tour);
 
  // ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== =====
  // ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== =====
