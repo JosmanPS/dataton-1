@@ -28,7 +28,10 @@
     <script type="text/javascript">
 	    $(document).ready(function(){
 
-	    	//$('#flujos').delay(5000000).trigger('click');
+	    	// si empiezan abiertos se renderean bien, si no, no, entonces los cerramos
+	    	$('#zapopan').delay(5000000).trigger('click');
+	    	$('#sentiment_analysis2').delay(5000000).trigger('click');
+	    	$('#sentiment_analysis').delay(5000000).trigger('click');
 	    	$('#de_donde_vienen').delay(5000000).trigger('click');
 	    	$('#metodologia').delay(5000000).trigger('click');
 	    	$('#a_donde_van').delay(5000000).trigger('click');
@@ -250,14 +253,158 @@
             </div>
             </div>
 
+            <div class="panel panel-default">
+            <div class="panel-heading">
+            <h4 class="panel-title">
+            	<a id="sentiment_analysis" data-toggle="collapse" data-parent="#accordion" href="#collapseFour">Análisis de sentimientos</a>
+            </h4>
+            </div>
+           <div id="collapseFour" class="row panel-collapse collapse in">
+                <div class="col-lg-7 col-md-7">
+
+                <!-- Mapa 3 -->
+                <!-- ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== -->
+                     <div class="panel panel-default" id="map-container3">
+                        <div class="panel-heading">
+                            <i class="fa fa-bar-chart-o fa-fw"></i> Análisis de los sentimientos de la población.
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body" style="height:610px;padding-left: 5px; padding-bottom: 5px; padding-top: 5px; ">
+
+                            <div id="map3"></div>
+                            <p class="lead">
+                            ******************************************
+                            ******************************************
+                            Esta herramienta se tiene que detallar por alguien que sí sepa hablar
+                            ******************************************
+                            ******************************************
+                            Esta herramienta permite entender de forma visual de dónde provienen los turistas de cada estado. Al hacer click en algún estado, el mapa colorea el resto de los estados según el número de turistas que viajan al estado seleccionado. De la misma forma, el histograma del lado derecho muestra el número de turistas procedentes de cada estado.</p>
+
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                <!-- ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== -->
+
+
+                </div>
+                <div class="col-lg-5 col-md-5" style="margin-left:-25px">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-bar-chart-o fa-fw"></i> Frecuencias
+                        </div>
+                        <div class="panel-body" style="height:610px;padding-left: 0px;overflow: auto;">
+                            <h4 id="chart-bar-header3" class="text-center"></h4>
+                            <div id="bar_bar_chart3"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+
+
+            <div class="panel panel-default">
+            <div class="panel-heading">
+            <h4 class="panel-title">
+            	<a id="sentiment_analysis2" data-toggle="collapse" data-parent="#accordion" href="#collapseFive">Análisis de sentimientos 2</a>
+            </h4>
+            </div>
+           <div id="collapseFive" class="row panel-collapse collapse in">
+                <div class="col-lg-7 col-md-7">
+
+                <!-- Mapa 4 -->
+                <!-- ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== -->
+                     <div class="panel panel-default" id="map-container4">
+                        <div class="panel-heading">
+                            <i class="fa fa-bar-chart-o fa-fw"></i> Análisis de los sentimientos dos de la población.
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body" style="height:610px;padding-left: 5px; padding-bottom: 5px; padding-top: 5px; ">
+
+                            <div id="map4"></div>
+                            <p class="lead">
+                            ******************************************
+                            ******************************************
+                            Esta herramienta se tiene que detallar por alguien que sí sepa hablar
+                            ******************************************
+                            ******************************************
+                            Esta herramienta permite entender de forma visual de dónde provienen los turistas de cada estado. Al hacer click en algún estado, el mapa colorea el resto de los estados según el número de turistas que viajan al estado seleccionado. De la misma forma, el histograma del lado derecho muestra el número de turistas procedentes de cada estado.</p>
+
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                <!-- ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== -->
+
+
+                </div>
+                <div class="col-lg-5 col-md-5" style="margin-left:-25px">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-bar-chart-o fa-fw"></i> Frecuencias
+                        </div>
+                        <div class="panel-body" style="height:610px;padding-left: 0px;overflow: auto;">
+                            <h4 id="chart-bar-header4" class="text-center"></h4>
+                            <div id="bar_bar_chart4"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+
+            <div class="panel panel-default">
+            <div class="panel-heading">
+            <h4 class="panel-title">
+            	<a id="zapopan" data-toggle="collapse" data-parent="#accordion" href="#collapseSix">Zapopan</a>
+            </h4>
+            </div>
+           <div id="collapseSix" class="row panel-collapse collapse in">
+                <div class="col-lg-7 col-md-7">
+
+                <!-- Mapa 5 -->
+                <!-- ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== -->
+                     <div class="panel panel-default" id="map-container5">
+                        <div class="panel-heading">
+                            <i class="fa fa-bar-chart-o fa-fw"></i> Turismpo de Zapopan
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body" style="height:610px;padding-left: 5px; padding-bottom: 5px; padding-top: 5px; ">
+
+                            <div id="map5"></div>
+                            <p class="lead">
+                            ******************************************
+                            ******************************************
+                            Esta herramienta se tiene que detallar por alguien que sí sepa hablar
+                            ******************************************
+                            ******************************************
+                            </p>
+
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                <!-- ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== -->
+
+
+                </div>
+                <div class="col-lg-5 col-md-5" style="margin-left:-25px">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-bar-chart-o fa-fw"></i> Frecuencias
+                        </div>
+                        <div class="panel-body" style="height:610px;padding-left: 0px;overflow: auto;">
+                            <h4 id="chart-bar-header5" class="text-center"></h4>
+                            <div id="bar_bar_chart5"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
            
         	<div class="panel panel-default">
             <div class="panel-heading">
             <h4 class="panel-title">
-            	<a id="flujos" data-toggle="collapse" data-parent="#accordion" href="#collapseFour">Flujos de personas entre estados</a>
+            	<a id="flujos" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven">Flujos de personas entre estados</a>
             </h4>
             </div>
-            <div id="collapseFour" class="row panel-collapse collapse in">
+            <div id="collapseSeven" class="row panel-collapse collapse in">
                 <div class="col-lg-offset-3 col-md-offset-3 col-lg-6 col-md-6">
                    <div class="panel panel-default">
                         <div class="panel-heading">
@@ -289,12 +436,16 @@
                             <i class="fa fa-comments fa-fw"></i> Fuentes
                         </div>
                         <!-- /.panel-heading -->
-                        <div class="panel-body" style="height:550;padding-left: 15px;">
-                            <p class="lead"> Moguel, Yoisi. Actividad turística de México no crecerá en 2014 [<a href="http://www.elfinanciero.com.mx/economia/actividad-turistica-de-mexico-no-crecera-en-2014.html">en línea</a>]. El financiero.Mérida, Yucatán.  25-02-2014. <br>Disponible en Internet: http://www.elfinanciero.com.mx/economia/actividad-turistica-de-mexico-no-crecera-en-2014.html
 
-                            Lars Kai Hansen, Adam Arvidsson, Finn Årup Nielsen, Elanor Colleoni,Michael Etter, "Good Friends, Bad News - Affect and Virality inTwitter", The 2011 International Workshop on Social Computing, Network, and Services (SocialComNet 2011).
+                        <div class="panel-body" style="height:550;padding-left: 15px;">
+                        <p class="lead"> Rodríguez, José Manuel, How’s the tone of Mexican social media? [<a href="http://geekonomika.com/files/twitter.pdf" target="_blank">en línea</a>].2013</p>         
+
+                            <p class="lead"> Moguel, Yoisi. Actividad turística de México no crecerá en 2014 [<a href="http://www.elfinanciero.com.mx/economia/actividad-turistica-de-mexico-no-crecera-en-2014.html" target="_blank">en línea</a>]. El financiero.Mérida, Yucatán.  25-02-2014. <br>Disponible en Internet: http://www.elfinanciero.com.mx/economia/actividad-turistica-de-mexico-no-crecera-en-2014.html</p>
+
+                            <p class="lead">Lars Kai Hansen, Adam Arvidsson, Finn Årup Nielsen, Elanor Colleoni,Michael Etter, "Good Friends, Bad News - Affect and Virality inTwitter", The 2011 International Workshop on Social Computing, Network, and Services (SocialComNet 2011).
                             </p>                           
                         </div>
+                        
                         <!-- /.panel-body -->
                     </div>
                 </div>
@@ -546,8 +697,8 @@
     <script src="js/leaflet.js"></script>
 
     <script src="js/chord.js"></script>
-    <script type="text/javascript" src="js/bar_chart.js"></script>
-    <script type="text/javascript" src="js/map.js"></script>
+    <script type="text/javascript" src="js/bar_chart_factor.js"></script>
+    <script type="text/javascript" src="js/map_factor.js"></script>
 
     <script src="js/bootstrap.min.js"></script>
     <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
