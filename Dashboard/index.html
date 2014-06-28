@@ -12,6 +12,10 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
 
+    <!-- NEW -->
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css">
+	<!-- END NEW -->
+
     <!-- Page-Level Plugin CSS - Dashboard -->
     <link href="css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet">
     <link href="css/plugins/timeline/timeline.css" rel="stylesheet">
@@ -20,6 +24,17 @@
     <link href="css/sb-admin.css" rel="stylesheet">
     <link href="css/leaflet.css" rel="stylesheet">
     
+    <script src="js/jquery-1.10.2.js"></script>
+    <script type="text/javascript">
+	    $(document).ready(function(){
+
+	    	//$('#flujos').delay(5000000).trigger('click');
+	    	$('#de_donde_vienen').delay(5000000).trigger('click');
+	    	$('#metodologia').delay(5000000).trigger('click');
+	    	$('#a_donde_van').delay(5000000).trigger('click');
+
+	    });
+    </script>
 </head>
 
 <body>
@@ -50,7 +65,7 @@
             </div>
 
             <div class="row">
-                <div class="col-lg-6 col-md-6">
+                <div class="col-lg-5 col-md-5">
                     <div class="panel panel-default" >
                         <div class="panel-heading">
                             <i class="fa fa-comments fa-fw"></i> Tema de investigación
@@ -72,7 +87,7 @@
                     </div>
                 </div>
 
-                <div class="col-lg-6 col-md-6">
+                <div class="col-lg-7 col-md-7">
                     <div class="panel panel-default" >
                         <div class="panel-heading">
                             <i class="fa fa-comments fa-fw"></i> Impacto
@@ -106,29 +121,42 @@
                 </div>
             </div>
 
-            <div class="row">
+            <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+            <div class="panel-heading">
+            <h4 class="panel-title">
+            	<a id="a_donde_van" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">A dónde van los turistas en México</a>
+            </h4>
+            </div>
+            <div id="collapseOne" class="row panel-collapse collapse in">
+            	
                 <div class="col-lg-7 col-md-7">
 
                     <!-- ===== ===== ===== ===== ===== ===== ===== MAPA 1 ==== ===== ===== ===== ===== ===== ===== ===== -->
                     <!-- ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== -->
-
+                    
                     <div class="panel panel-default" id="map-container">
+                        
                         <div class="panel-heading">
-                            <i class="fa fa-bar-chart-o fa-fw"></i> A dónde van los turistas en México.
+                            <i class="fa fa-bar-chart-o fa-fw"></i>
+                        	Mapa
+                            
                         </div>
                         <!-- /.panel-heading -->
 
-                        <div class="panel-body" style="height: 610px; padding-left: 5px; padding-bottom: 5px; padding-top: 5px; ">
+	                        <div class="panel-body" style="height: 610px; padding-left: 5px; padding-bottom: 5px; padding-top: 5px; ">
 
-                            <div id="map"></div>
-                            <p class="lead">Esta herramienta permite entender de forma visual a dónde van los turistas de cada estado. Al hacer click en algún estado, el mapa colorea el resto de los estados según el número de turistas que viajan del estado seleccionado a las otras entidades del país. De la misma forma, el histograma del lado derecho muestra el número de turistas que viajan a cada estado.</p>
-                        </div>
+	                            <div id="map"></div>
+	                            <p class="lead">Esta herramienta permite entender de forma visual a dónde van los turistas de cada estado. Al hacer click en algún estado, el mapa colorea el resto de los estados según el número de turistas que viajan del estado seleccionado a las otras entidades del país. De la misma forma, el histograma del lado derecho muestra el número de turistas que viajan a cada estado.</p>
+	                        </div>
+                        
                         <!-- /.panel-body -->
                     </div>
 
                     <!-- ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== -->
-
+				
                 </div>
+                
                 <div class="col-lg-5 col-md-5" style="margin-left:-25px">
                     <div class="panel panel-default">
                         <div class="panel-heading">
@@ -139,10 +167,18 @@
                             <div id="bar_bar_chart"></div>
                         </div>
                     </div>
+                
                 </div>
             </div>
-
-            <div class="row">
+            </div>
+            
+            <div class="panel panel-default">
+            <div class="panel-heading">
+            <h4 class="panel-title">
+            	<a id="metodologia" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">Metodología</a>
+            </h4>
+            </div>
+            <div id="collapseTwo" class="row panel-collapse collapse in">
                 <div class="col-lg-12 col-md-12">
                     <div class="panel panel-default" >
                         <div class="panel-heading">
@@ -170,8 +206,15 @@
                     </div>
                 </div>
             </div>
+            </div>
 
-           <div class="row">
+            <div class="panel panel-default">
+            <div class="panel-heading">
+            <h4 class="panel-title">
+            	<a id="de_donde_vienen" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">De dónde vienen los turistas en México</a>
+            </h4>
+            </div>
+           <div id="collapseThree" class="row panel-collapse collapse in">
                 <div class="col-lg-7 col-md-7">
 
                 <!-- Mapa 2 -->
@@ -205,29 +248,20 @@
                     </div>
                 </div>
             </div>
+            </div>
 
-           <div class="row">
-                <div class="col-lg-7 col-md-7">
-					
-
-					<!-- SE FUE -->
-
-
-
-	                <div class="col-lg-5 col-md-5" style="margin-left:-25px">
-	                    
-
-	                    <!-- SE FUE -->
-
-
-	                </div>
-            	</div>
-
-            <div class="row">
+           
+        	<div class="panel panel-default">
+            <div class="panel-heading">
+            <h4 class="panel-title">
+            	<a id="flujos" data-toggle="collapse" data-parent="#accordion" href="#collapseFour">Flujos de personas entre estados</a>
+            </h4>
+            </div>
+            <div id="collapseFour" class="row panel-collapse collapse in">
                 <div class="col-lg-offset-3 col-md-offset-3 col-lg-6 col-md-6">
                    <div class="panel panel-default">
                         <div class="panel-heading">
-                            <i class="fa fa-bar-chart-o fa-fw"></i> Diagrama de Cuerdas
+                            <i class="fa fa-bar-chart-o fa-fw"></i> Diagrama de cuerdas
                         </div>
                         <div class="panel-body">
                             <div class="row">
@@ -242,10 +276,11 @@
 
 
             </div>
+            </div>
                 <!-- /.col-lg-4 -->
 
         </div>            
-            </div>
+            
 
             <div class="row">
                 <div class="col-lg-12 col-md-12">
@@ -264,7 +299,7 @@
                     </div>
                 </div>
             </div>
-
+            </div>
 
             <div class="row">
                 <section id="team" class="our-team">
@@ -507,7 +542,7 @@
     <!-- Core Scripts - Include with every page -->
     <script src="js/d3.v3.min.js"></script>
     <script type="text/javascript" src="js/nvd3.js"></script>
-    <script src="js/jquery-1.10.2.js"></script>
+    
     <script src="js/leaflet.js"></script>
 
     <script src="js/chord.js"></script>
@@ -517,15 +552,17 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
 
-    <!-- Page-Level Plugin Scripts - Dashboard -->
-    <script src="js/plugins/morris/raphael-2.1.0.min.js"></script>
-    <script src="js/plugins/morris/morris.js"></script>
-
     <!-- SB Admin Scripts - Include with every page -->
     <script src="js/sb-admin.js"></script>
 
     <!-- Page-Level Demo Scripts - Dashboard - Use for reference -->
     <script src="js/demo/dashboard-demo.js"></script>
+
+
+
+        <!-- Page-Level Plugin Scripts - Dashboard -->
+    <script src="js/plugins/morris/raphael-2.1.0.min.js"></script>
+    <script src="js/plugins/morris/morris.js"></script>
 
 </body>
 
