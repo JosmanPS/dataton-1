@@ -18,7 +18,19 @@ function draw_map() {
       });
       return json;
   })(); 
-
+  var cve_estados = (function () {
+      var json = null;
+      $.ajax({
+          'async': false,
+          'global': false,
+          'url': "Data/cve_estados.json",
+          'dataType': "json",
+          'success': function (data) {
+              json = data;
+          }
+      });
+      return json;
+  })(); 
   var resumen = (function () {
       var json = null;
       $.ajax({
@@ -173,7 +185,9 @@ function draw_map() {
     $('#bar_bar_chart svg').remove();
     if(state_id == "-1"){
       createchart("Data/salen_total.tsv");
+      $("#chart-bar-header").text("Totales")
     } else {
+      $("#chart-bar-header").text("Estado: " + cve_estados[state_id])
       createchart( "Data/out_state_" + String(parseInt(state_id) - 1) + ".tsv" );
     }  
     if(!first){
@@ -258,7 +272,19 @@ function draw_map2() {
       });
       return json;
   })();
-
+  var cve_estados = (function () {
+      var json = null;
+      $.ajax({
+          'async': false,
+          'global': false,
+          'url': "Data/cve_estados.json",
+          'dataType': "json",
+          'success': function (data) {
+              json = data;
+          }
+      });
+      return json;
+  })();
   var resumen = (function () {
       var json = null;
       $.ajax({
@@ -414,8 +440,10 @@ function draw_map2() {
     
     $('#bar_bar_chart2 svg').remove();
     if(state_id == "-1"){
+      $("#chart-bar-header2").text("Totales")
       createchart2("Data/entran_total.tsv");
     } else {
+      $("#chart-bar-header2").text("Estado: " + cve_estados[state_id])
       createchart2( "Data/in_state_" + String(parseInt(state_id) - 1) + ".tsv" );
     }
     if(!first){
