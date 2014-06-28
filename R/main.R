@@ -107,7 +107,6 @@ writeLines(toJSON(Trans), "../Dashboard/Data/transicion.json")
 writeLines(toJSON(Locales), "../Dashboard/Data/resumen.json")
 writeLines(toJSON(Entran), "../Dashboard/Data/entran.json")
 writeLines(toJSON(Salen), "../Dashboard/Data/salen.json")
-writeLines(toJSON(Salen), "../Dashboard/Data/resumen.json")
 
  # Analisis de Sentimientos
 calificarEstados =  function(Data)
