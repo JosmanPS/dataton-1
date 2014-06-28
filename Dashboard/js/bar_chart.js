@@ -39,7 +39,7 @@ createchart = function(filename){
       .attr("x", x)
       .attr("dy", -3)
       .attr("text-anchor", "middle")
-      .text(String);
+      .text(function(d) {return d3.round(d*100, 0) + "%";});
     // vertical grid lines
     gridContainer.selectAll("line").data(x.ticks(10)).enter().append("line")
       .attr("x1", x)
@@ -75,7 +75,7 @@ createchart = function(filename){
       .attr("text-anchor", "start") // text-align: right
       .attr("fill", "black")
       .attr("stroke", "none")
-      .text(function(d) { return d3.round(barValue(d), 2); });
+      .text(function(d) { return d3.round(barValue(d)*100, 1) + "%"; });
     // start line
     barsContainer.append("line")
       .attr("y1", -gridChartOffset)
@@ -125,7 +125,7 @@ createchart2 = function(filename){
       .attr("x", x)
       .attr("dy", -3)
       .attr("text-anchor", "middle")
-      .text(String);
+      .text(function(d) {return d3.round(d*100, 0) + "%";});
     // vertical grid lines
     gridContainer.selectAll("line").data(x.ticks(10)).enter().append("line")
       .attr("x1", x)
@@ -161,7 +161,7 @@ createchart2 = function(filename){
       .attr("text-anchor", "start") // text-align: right
       .attr("fill", "black")
       .attr("stroke", "none")
-      .text(function(d) { return d3.round(barValue(d), 2); });
+      .text(function(d) { return d3.round(barValue(d)*100, 1) + "%"; });
     // start line
     barsContainer.append("line")
       .attr("y1", -gridChartOffset)
