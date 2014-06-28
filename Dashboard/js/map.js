@@ -31,7 +31,20 @@ function draw_map() {
           }
       });
       return json;
-  })(); 
+  })();
+  var salen_total = (function () {
+      var json = null;
+      $.ajax({
+          'async': false,
+          'global': false,
+          'url': "Data/salen_total.json",
+          'dataType': "json",
+          'success': function (data) {
+              json = data;
+          }
+      });
+      return json;
+  })();  
   var json = (function () {
       var json = null;
       $.ajax({
@@ -45,7 +58,7 @@ function draw_map() {
       });
       return json;
   })(); 
-
+  
   L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
     maxZoom: 18,
     minZoom: 5,
@@ -80,8 +93,10 @@ function draw_map() {
     state_id = typeof state_id !== 'undefined' ? state_id : "10";
 
     if(out_flag){
-      
       return transition[parseInt(state_id)-1][id]
+    }
+    else{
+      return salen_total[id]
     }
   }
 
@@ -105,7 +120,7 @@ function draw_map() {
         color: 'white',
         dashArray: '3',
         fillOpacity: 0.7,
-        fillColor: '#FFEDA0'
+        fillColor: getColor(selectScale(feature.properties.CVE_ENT, out_flag = false, state_id = -1))
       };
     }
     return {
@@ -254,6 +269,19 @@ function draw_map2() {
       });
       return json;
   })();
+  var entran_total = (function () {
+      var json = null;
+      $.ajax({
+          'async': false,
+          'global': false,
+          'url': "Data/entran_total.json",
+          'dataType': "json",
+          'success': function (data) {
+              json = data;
+          }
+      });
+      return json;
+  })(); 
   var json = (function () {
       var json = null;
       $.ajax({
@@ -304,6 +332,8 @@ function draw_map2() {
     if(out_flag){
 
       return transition[parseInt(id)-1][state_id]
+    } else {
+      return entran_total[id]
     }
   }
 
@@ -327,7 +357,7 @@ function draw_map2() {
         color: 'white',
         dashArray: '3',
         fillOpacity: 0.7,
-        fillColor: "#9ecae1"
+        fillColor: getColor(selectScale(feature.properties.CVE_ENT, out_flag = false, state_id = false))
       };
     }
     return {
@@ -470,3 +500,9 @@ $(window).resize(function(){
   var h2 = $("#map-container2").width();
   $("#map2").css("width", (h2-offSet));
 }).resize();
+
+init_graphs = function(){
+  createchart("Data/salen_total.tsv");
+  createchart2("Data/entran_total.tsv");
+}
+init_graphs()
