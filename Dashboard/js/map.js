@@ -163,16 +163,19 @@ function draw_map() {
       mouseout: resetHighlight,
       click: (function (e) {
         updateMap(first = false, state_id = feature.properties.CVE_ENT);
-        $('#bar_bar_chart svg').remove();
-        createchart( "Data/out_state_" + String(parseInt(state_id) - 1) + ".tsv" );
-        })
+      })
     });
   }
 
   function updateMap(first, state_id) {
     first = typeof first !== 'undefined' ? first : false;
     state_id = typeof state_id !== 'undefined' ? state_id : "-1";
-    
+    $('#bar_bar_chart svg').remove();
+    if(state_id == "-1"){
+      createchart("Data/salen_total.tsv");
+    } else {
+      createchart( "Data/out_state_" + String(parseInt(state_id) - 1) + ".tsv" );
+    }  
     if(!first){
       map.removeLayer( geojson )
     }
@@ -400,23 +403,6 @@ function draw_map2() {
       mouseout: resetHighlight,
       click: (function (e) {
         updateMap(first = false, state_id = feature.properties.CVE_ENT);
-        $('#bar_bar_chart2 svg').remove();
-
-
-
-        // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-        // AQUI PONER EL ARCHIVO QUE SE LEERA Y LLAMAR A OTRO CREATECHART QUE CREE LA SEGUNDA GRAFICA
-        // CREATECHART ESTA EN BAR_CHART.JS
-        //
-        createchart2( "Data/in_state_" + String(parseInt(state_id) - 1) + ".tsv" );
-        // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
 
         })
     });
@@ -425,11 +411,16 @@ function draw_map2() {
   function updateMap(first, state_id) {
     first = typeof first !== 'undefined' ? first : false;
     state_id = typeof state_id !== 'undefined' ? state_id : "-1";
-
+    
+    $('#bar_bar_chart2 svg').remove();
+    if(state_id == "-1"){
+      createchart2("Data/entran_total.tsv");
+    } else {
+      createchart2( "Data/in_state_" + String(parseInt(state_id) - 1) + ".tsv" );
+    }
     if(!first){
       map.removeLayer( geojson )
     }
-
     function tempStyle(feature){
       return(style(feature, state_id = state_id))
     }
@@ -501,8 +492,3 @@ $(window).resize(function(){
   $("#map2").css("width", (h2-offSet));
 }).resize();
 
-init_graphs = function(){
-  createchart("Data/salen_total.tsv");
-  createchart2("Data/entran_total.tsv");
-}
-init_graphs()
