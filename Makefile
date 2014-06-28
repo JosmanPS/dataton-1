@@ -31,6 +31,15 @@ Python/goslate.py:
 	wget https://bitbucket.org/zhuoqiang/goslate/raw/tip/goslate.py
 	mv goslate.py Python/goslate.py
 
+Dashboard/Data/zapopan.geojson:
+	wget http://mapserver.inegi.org.mx/MGN/mgm2010v5_0a.zip
+	mv mgm2010v5_0a.zip municipios.zip
+	unzip municipios
+	ogr2ogr -f GeoJSON -t_srs crs:84 -where "CVE_ENT IN ('01')" zapopan.geojson Municipios_2010_5A.shp
+	ogr2ogr -f "ESRI Shapefile" -where "CVE_ENT == '09" new_shapefile.shp huge_shapefile.shp
+
+Dashboard/Data/zapopan.geojson
+
 clean:
 	rm twitter.aux
 	rm twitter.dvi

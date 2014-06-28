@@ -131,8 +131,9 @@ RR2 = Data %.% group_by(State) %.% summarize(Score = mean(score, na.rm = TRUE))
 RR$todos = RR2$Score
 rownames(RR) = Results$id
 RR = subset(RR, select=-State)
-min.RR = min(RR$todos, na.rm = T)
-max.RR = max(RR$todos, na.rm = T)
+RR = exp(RR)
+min.RR = min(RR, na.rm = T)
+max.RR = max(RR, na.rm = T)
 RR = data.frame(lapply(RR, function(X) ((X-min.RR)/(max.RR-min.RR))))
 rownames(RR) = RR2$State
 
