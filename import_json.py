@@ -100,10 +100,10 @@ for cve in cves.iterkeys():
 
     for j in range(0,len(data)):
     	curr = data[j]
-    	#if int(j) - 1 != i:
-    	jkey=str(j + 1) if len(str(j + 1))>1 else ('0' + str(j + 1))
+    	if j != i:
+	    	jkey=str(j + 1) if len(str(j + 1))>1 else ('0' + str(j + 1))
 
-    	fw.write(cves[jkey] + "\t" + str(curr[cve]) + "\n")
+	    	fw.write(cves[jkey] + "\t" + str(curr[cve]) + "\n")
 
     fw.close()
 
