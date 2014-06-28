@@ -78,6 +78,8 @@ for cve in cves.iterkeys():
             fw.write(cves[j] + "\t" + str(curr[j]) + "\n")
     fw.close()
 
+fhandle.close()
+
 # ENTRAN
 # ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== 
 
@@ -96,12 +98,14 @@ for cve in cves.iterkeys():
 
     fw.write("estado	visitas" + "\n")
 
-    for j in data[i].iterkeys():
-        if int(j) - 1 != i:
-            fw.write(cves[j] + "\t" + str(curr[j]) + "\n")
+    for j in range(0,len(data)):
+    	curr = data[j]
+    	if j != i:
+	    	jkey=str(j + 1) if len(str(j + 1))>1 else ('0' + str(j + 1))
+
+	    	fw.write(cves[jkey] + "\t" + str(curr[cve]) + "\n")
+
     fw.close()
-
-
 
 
 
