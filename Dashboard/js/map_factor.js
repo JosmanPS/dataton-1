@@ -285,7 +285,7 @@ function draw_map_sentiment(map_no, pre_fix_file_detailed, pre_fix_file_total, m
       $.ajax({
           'async': false,
           'global': false,
-          'url': "Data/resumen.json",
+          'url': "Data/sentimientos.json",
           'dataType': "json",
           'success': function (data) {
               json = data;
@@ -342,7 +342,7 @@ function draw_map_sentiment(map_no, pre_fix_file_detailed, pre_fix_file_total, m
   info.update = function (props) {
     this._div.innerHTML = '<h4>'+ map_title +'</h4>' +  (props ?
       '<b>' + props.NOM_ENT + '</b><br />' +
-      'Sentimiento: ' + resumen[parseInt(props.CVE_ENT)-1].Salen + '</b><br />' 
+      'Sentimiento Pobladores: ' + resumen[parseInt(props.CVE_ENT)-1].hogar + '</b><br />' + 'Sentimiento Turistas: ' + resumen[parseInt(props.CVE_ENT)-1].turista
       : 'Escoge un estado');
   };
 
@@ -510,8 +510,9 @@ colors3 = ["#d73027","#f46d43","#fdae61","#fee08b","#d9ef8b","#a6d96a","#66bd63"
 
 draw_map("","out_state_","salen_total","Turismo en Mexico",createchart, colors1, color_scale_tour);
 draw_map("2","in_state_","entran_total","Turismo en Mexico",createchart2,colors2, color_scale_tour);
-draw_map_sentiment("3","in_state_","sentimientos_hogar","Sentimiento Hogar",createchart2, colors3, color_scale_sent);
-draw_map_sentiment("4","in_state_","sentimientos_turista","Sentimiento Turismo",createchart2,colors3, color_scale_sent);
+draw_map_sentiment("3","in_state_","sentimientos_turista","Sentimiento Turismo",createchart2,colors3, color_scale_sent);
+draw_map_sentiment("4","in_state_","sentimientos_hogar","Sentimiento Pobladores",createchart2, colors3, color_scale_sent);
+
 
 
  // ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== =====
