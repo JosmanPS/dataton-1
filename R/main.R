@@ -19,6 +19,7 @@ names(Data) <- c("user.id", "lat", "long", "score")
 # Encontrar en que estado se realizo cada tweet.
 
 mex = readOGR("../Dashboard/Data/Resultados.geojson", "OGRGeoJSON")
+zap = readOGR("../Dashboard/Data/zapopan.geojson", "OGRGeoJSON")
 
 # Quitar acentos
 levels(mex$NOM_ENT) <- gsub( "\341", "a", levels(mex$NOM_ENT))
@@ -35,9 +36,11 @@ Data = as.data.frame(Data %.% group_by(user.id) %.% filter(n()>10))
 
 Loc = SpatialPoints(Data[,c("lat", "long")], proj4string=CRS(proj4string(mex)))
 Loc.RL = over(Loc, mex)
+Zap.Loc.RL = over(Loc, zap)
 
 Data$State <- Loc.RL$CVE_ENT
-
+Zap.Data = Data
+Zap.Data$Zapopan <- 3
 Data = Data %.% filter( Data$State != "<NA>")
 
 Origen = Data %.% group_by(user.id) %.% summarise( Estado = names(which.max(table(State))))
@@ -122,16 +125,14 @@ calificarEstados =  function(Data)
 }
 
 Data = Data %.% group_by(user.id) %.% mutate( home = ifelse(State == names(which.max(table(State))),"hogar", "turista"))
-Data = Data %.% mutate( home = revalue(home,c("TRUE" = "hogar", "FALSE" = "turista")))
 
 RR = Data %.% group_by(State, home) %.% summarize(Score = mean(score, na.rm = TRUE))
 RR = dcast(RR, State~home, value.var = "Score")
 
 RR2 = Data %.% group_by(State) %.% summarize(Score = mean(score, na.rm = TRUE))
 RR$todos = RR2$Score
-rownames(RR) = Results$id
 RR = subset(RR, select=-State)
-RR = exp(RR)
+RR = exp(exp(RR+10))
 min.RR = min(RR, na.rm = T)
 max.RR = max(RR, na.rm = T)
 RR = data.frame(lapply(RR, function(X) ((X-min.RR)/(max.RR-min.RR))))
