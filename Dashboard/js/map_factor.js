@@ -189,10 +189,10 @@ function draw_map(map_no, pre_fix_file_detailed, pre_fix_file_total, chartfuncti
     $('#bar_bar_chart' + String(map_no) + ' svg').remove();
     if(state_id == "-1"){
       $("#chart-bar-header" + String(map_no)).text("Totales")
-      chartfunction("Data/" + pre_fix_file_total + ".tsv");
+      chartfunction("Data/" + pre_fix_file_total + ".tsv", String(map_no));
     } else {
       $("#chart-bar-header" + String(map_no)).text("Estado: " + cve_estados[state_id])
-      chartfunction( "Data/" + pre_fix_file_detailed + String(parseInt(state_id) - 1) + ".tsv" );
+      chartfunction( "Data/" + pre_fix_file_detailed + String(parseInt(state_id) - 1) + ".tsv", String(map_no));
     }
     if(!first){
       map.removeLayer( geojson )
@@ -252,6 +252,9 @@ function draw_map(map_no, pre_fix_file_detailed, pre_fix_file_total, chartfuncti
 
 draw_map("","out_state_","salen_total",createchart);
 draw_map("2","in_state_","entran_total",createchart2);
+draw_map("3","in_state_","entran_total",createchart);
+draw_map("4","in_state_","entran_total",createchart2);
+draw_map("5","in_state_","entran_total",createchart);
 
  // ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== =====
  // ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== =====
@@ -266,5 +269,14 @@ $(window).resize(function(){
 
   var h2 = $("#map-container2").width();
   $("#map2").css("width", (h2-offSet));
+
+  var h3 = $("#map-container3").width();
+  $("#map3").css("width", (h3-offSet));
+
+  var h4 = $("#map-container4").width();
+  $("#map4").css("width", (h4-offSet));
+
+  var h5 = $("#map-container5").width();
+  $("#map5").css("width", (h5-offSet));
 }).resize();
 
