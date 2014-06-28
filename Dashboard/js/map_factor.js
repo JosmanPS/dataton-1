@@ -51,7 +51,7 @@ function draw_map(map_no, pre_fix_file_detailed, pre_fix_file_total, map_title, 
       $.ajax({
           'async': false,
           'global': false,
-          'url': "Data/entran_total.json",
+          'url': "Data/"+ pre_fix_file_total+".json",
           'dataType': "json",
           'success': function (data) {
               json = data;
@@ -298,7 +298,7 @@ function draw_map_sentiment(map_no, pre_fix_file_detailed, pre_fix_file_total, m
       $.ajax({
           'async': false,
           'global': false,
-          'url': "Data/entran_total.json",
+          'url': "Data/"+pre_fix_file_total+".json",
           'dataType': "json",
           'success': function (data) {
               json = data;
@@ -510,7 +510,7 @@ colors3 = ["#d73027","#f46d43","#fdae61","#fee08b","#d9ef8b","#a6d96a","#66bd63"
 
 draw_map("","out_state_","salen_total","Turismo en Mexico",createchart, colors1, color_scale_tour);
 draw_map("2","in_state_","entran_total","Turismo en Mexico",createchart2,colors2, color_scale_tour);
-draw_map_sentiment("3","in_state_","entran_total","Análisis de Sentimiento",createchart2, colors3, color_scale_sent);
+draw_map_sentiment("3","in_state_","sentimientos","Análisis de Sentimiento",createchart2, colors3, color_scale_sent);
 draw_map("4","in_state_","entran_total","Turismo en Mexico",createchart,colors1, color_scale_tour);
 draw_map("5","in_state_","entran_total","Turismo en Mexico",createchart,colors1, color_scale_tour);
 
