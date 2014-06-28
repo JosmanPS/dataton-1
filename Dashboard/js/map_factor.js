@@ -250,6 +250,12 @@ function draw_map(map_no, pre_fix_file_detailed, pre_fix_file_total, chartfuncti
  // ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== =====
  // ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== =====
 
+ // Se crean los mapas
+ // las diferentes funciones createchart estan definidas en bar_chart_factor.js, basicamente sólo cambian el color
+ // el primer argumento es para apuntar los ids al mapa y a los contenedores
+ // el segundo es el prefijo del archivo del que se sacan los datos, p.ej uno sería out_state_0.tsv, es el de las salidas del estado 0
+ // el tercero es donde estan los totales, (entran o salen)
+
 draw_map("","out_state_","salen_total",createchart);
 draw_map("2","in_state_","entran_total",createchart2);
 draw_map("3","in_state_","entran_total",createchart);
