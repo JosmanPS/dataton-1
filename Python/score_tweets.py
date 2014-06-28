@@ -46,7 +46,9 @@ def main():
 				if jline["place"]["country_code"] == 'MX':
 					text = jline["text"]
 					x,y = jline["geo"]["coordinates"]
-					print y, ",", x, ",", score
+					name = jline["user"]["screen_name"]
+					userId = "id" + jline["user"]["id_str"]
+					print userId, ", ", y, ", ", x, ",", score
 			except:
 				pass
 
