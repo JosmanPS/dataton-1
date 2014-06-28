@@ -1,4 +1,3 @@
-
 # File to prepare data.
 
 .PHONY: clean fullclean
