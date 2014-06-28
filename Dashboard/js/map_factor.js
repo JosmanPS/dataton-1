@@ -512,7 +512,7 @@ draw_map("","out_state_","salen_total","Turismo en Mexico",createchart, colors1,
 draw_map("2","in_state_","entran_total","Turismo en Mexico",createchart2,colors2, color_scale_tour);
 draw_map_sentiment("3","in_state_","sentimientos_hogar","Sentimiento Hogar",createchart2, colors3, color_scale_sent);
 draw_map_sentiment("4","in_state_","sentimientos_turista","Sentimiento Turismo",createchart2,colors3, color_scale_sent);
-draw_map("5","in_state_","entran_total","Turismo en Mexico",createchart1,colors1, color_scale_tour);
+
 
  // ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== =====
  // ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== =====
