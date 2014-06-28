@@ -120,3 +120,21 @@ calificarEstados =  function(Data)
 	Results <- Results[order(Results[,2]),]
 	return(Results)
 }
+
+Data = Data %.% group_by(user.id) %.% mutate( home = ifelse(State == names(which.max(table(State))),"hogar", "turista"))
+Data = Data %.% mutate( home = revalue(home,c("TRUE" = "hogar", "FALSE" = "turista")))
+
+RR = Data %.% group_by(State, home) %.% summarize(Score = mean(score, na.rm = TRUE))
+RR = dcast(RR, State~home, value.var = "Score")
+
+RR2 = Data %.% group_by(State) %.% summarize(Score = mean(score, na.rm = TRUE))
+RR$todos = RR2$Score
+rownames(RR) = Results$id
+RR = subset(RR, select=-State)
+min.RR = min(RR$todos, na.rm = T)
+max.RR = max(RR$todos, na.rm = T)
+RR = data.frame(lapply(RR, function(X) ((X-min.RR)/(max.RR-min.RR))))
+rownames(RR) = RR2$State
+
+writeLines(toJSON(RR), "../Dashboard/Data/sentimientos.json")
+write.csv(RR, "../Dashboard/Data/sentimientos.csv")
