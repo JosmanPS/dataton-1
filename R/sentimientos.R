@@ -25,14 +25,14 @@ write.table(data.frame(visitas = data_sent$hogar, estado = data_edos$V1 , row.na
 write.table(data.frame(visitas = data_sent$turista, estado = data_edos$V1 , row.names = NULL), file='sentimientos_turista.tsv', quote=FALSE, sep='\t', row.names = FALSE,col.names = TRUE)
 
 
-sent_hogar = data$hogar
+sent_hogar = data_sent$hogar
 names(sent_hogar)= row.names(data_edos)
 sink("sentimientos_hogar.json")
 cat(toJSON(sent_hogar))
 sink()
 
-sent_turista = data$turista
+sent_turista = data_sent$turista
 names(sent_turista)= row.names(data_edos)
 sink("sentimientos_turista.json")
-cat(toJSON(sent_hogar))
+cat(toJSON(sent_turista))
 sink()
