@@ -2,14 +2,14 @@
 
 .PHONY: clean fullclean
 
-Results/Fig/map.eps: R/main.R Results/Data/coordinates.csv
+Results/Fig/map.eps: R/main.R Results/Data/tweets.csv
 	R --slave --vanilla -f R/main.R
 
 Results/Data/coordinates.csv: Python/score_tweets.py Results/Data/tweets.txt Results/Data/dictionary.txt
-	python Python/score_tweets.py Results/Data/tweets.txt Results/Data/dictionary.txt > Results/Data/coordinates.csv
+	python Python/score_tweets.py Results/Data/tweets.txt Results/Data/dictionary.txt > Results/Data/tweets.csv
 
-Results/Data/dictionary.txt: Python/train_dictionary.py Results/Data/origin.txt Results/Data/spaSent1.txt
-	head -n 10000 Results/Data/origen.txt > Results/Data/tweets.train
+Results/Data/dictionary.txt: Python/train_dictionary.py Results/Data/tweets.txt Results/Data/spaSent1.txt
+	head -n 10000 Results/Data/tweets.txt > Results/Data/tweets.train
 	python Python/train_dictionary.py Results/Data/tweets.train Results/Data/spaSent2.txt > Results/Data/dictionary.txt
 	rm Results/Data/tweets.train
 
