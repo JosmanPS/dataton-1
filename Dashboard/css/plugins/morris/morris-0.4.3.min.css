@@ -125,14 +125,11 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, 
 }
 
 
-#map {
+#map, #map2, #map3,#map4 {
     width: 650px;
     height: 510px;
 }
-#map2 {
-    width: 650px;
-    height: 510px;
-}
+
 .info {
     padding: 6px 8px;
     font: 14px/16px Arial, Helvetica, sans-serif;
