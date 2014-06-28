@@ -483,7 +483,7 @@ function draw_map_sentiment(map_no, pre_fix_file_detailed, pre_fix_file_total, m
 
       labels.push(
         '<i style="background:' + getColor(from + .001) + '"></i> ' +
-        100*from + '%' + (to ? '&ndash;' + 100*to + '%' : '+'));
+        from + (to ? '&ndash;' + to : '+'));
     }
 
     div.innerHTML = labels.join('<br>');
@@ -510,8 +510,8 @@ colors3 = ["#d73027","#f46d43","#fdae61","#fee08b","#d9ef8b","#a6d96a","#66bd63"
 
 draw_map("","out_state_","salen_total","Turismo en Mexico",createchart, colors1, color_scale_tour);
 draw_map("2","in_state_","entran_total","Turismo en Mexico",createchart2,colors2, color_scale_tour);
-draw_map_sentiment("3","in_state_","sentimientos_turista","Sentimiento Turismo",createchart2,colors3, color_scale_sent);
-draw_map_sentiment("4","in_state_","sentimientos_hogar","Sentimiento Pobladores",createchart2, colors3, color_scale_sent);
+draw_map_sentiment("3","in_state_","sentimientos_turista","Sentimiento Turismo",createchart3,colors3, color_scale_sent);
+draw_map_sentiment("4","in_state_","sentimientos_hogar","Sentimiento Pobladores",createchart3, colors3, color_scale_sent);
 
 
 
