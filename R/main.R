@@ -112,3 +112,15 @@ writeLines(toJSON(Entran), "../Dashboard/Data/entran.json")
 writeLines(toJSON(Salen), "../Dashboard/Data/salen.json")
 writeLines(toJSON(Salen), "../Dashboard/Data/resumen.json")
 
+ # Analisis de Sentimientos
+calificarEstados =  function(Data)
+{
+	RR = Data %.% group_by(State) %.% summarize(Score = mean(score, na.rm = TRUE))
+	Results <- data.frame(id = sort(unique(mex.df$id)), val = NA)
+	rownames(Results) = Results$id
+	RR.min = min(RR$Score, na.rm = T)
+	RR.max = max(RR$Score, na.rm = T)
+	Results[as.character(RR$State), "val"] = (RR$Score-RR.min)/(RR.max-RR.min)
+	Results <- Results[order(Results[,2]),]
+	return(Results)
+}

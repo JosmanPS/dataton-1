@@ -1,15 +1,7 @@
 
-# File to compile paper.
+# File to prepare data.
 
 .PHONY: clean fullclean
-
-twitter.pdf: twitter.dvi
-	dvipdf twitter
-
-twitter.dvi: twitter.tex Results/Fig/map.eps
-	bash Results/Fig/crop_all.sh
-	latex twitter
-	latex twitter
 
 Results/Fig/map.eps: R/main.R Results/Data/coordinates.csv
 	R --slave --vanilla -f R/main.R
