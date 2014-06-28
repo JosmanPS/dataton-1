@@ -150,7 +150,9 @@
 	                        <div class="panel-body" style="height: 610px; padding-left: 5px; padding-bottom: 5px; padding-top: 5px; ">
 
 	                            <div id="map"></div>
-	                            <p class="lead">Esta herramienta permite entender de forma visual a dónde van los turistas de cada estado. Al hacer click en algún estado, el mapa colorea el resto de los estados según el número de turistas que viajan del estado seleccionado a las otras entidades del país. De la misma forma, el histograma del lado derecho muestra el número de turistas que viajan a cada estado.</p>
+	                            <p class="lead">Esta herramienta permite entender de forma visual a dónde van los turistas de cada estado.</p> 
+                                <p class="lead">Vista inicial: muestra, del total de turistas existentes en el país, qué porcentaje turistea en cada uno de los estados.</p>
+                                <p class="lead">Vista al seleccionar un estado: Al hacer click en un estado, el mapa colorea el resto de los estados según el número de turistas que viajan del estado seleccionado a las otras entidades del país.</p>
 	                        </div>
                         
                         <!-- /.panel-body -->
@@ -168,6 +170,9 @@
                         <div class="panel-body" style="height:610px;padding-left: 0px;overflow: auto;">
                             <h4 id="chart-bar-header" class="text-center"></h4>
                             <div id="bar_bar_chart"></div>
+
+                            <p class="lead">Vista inicial: El histograma muestra de forma numérica, del total de turistas existentes en el país, qué porcentaje turistea en cada uno de los estados.</p>
+                            <p class="lead">Vista al seleccionar un estado en el mapa: Del total de turistas que salen del estado seleccionado en el mapa, qué porcentaje se dirige a cada uno de los destinos del histograma.</p>
                         </div>
                     </div>
                 
@@ -224,13 +229,15 @@
                 <!-- ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== ===== -->
                      <div class="panel panel-default" id="map-container2">
                         <div class="panel-heading">
-                            <i class="fa fa-bar-chart-o fa-fw"></i> De dónde vienen los turistas en México.
+                            <i class="fa fa-bar-chart-o fa-fw"></i> Mapa
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body" style="height:610px;padding-left: 5px; padding-bottom: 5px; padding-top: 5px; ">
 
                             <div id="map2"></div>
-                            <p class="lead">Esta herramienta permite entender de forma visual de dónde provienen los turistas de cada estado. Al hacer click en algún estado, el mapa colorea el resto de los estados según el número de turistas que viajan al estado seleccionado. De la misma forma, el histograma del lado derecho muestra el número de turistas procedentes de cada estado.</p>
+                            <p class="lead">Esta herramienta permite entender de forma visual de donde provienen los turistas dentro del país.</p>
+                            <p class="lead">Vista inicial: muestra, del total de turistas existentes en el país, qué porcentaje proviene de cada uno de los estados.</p>
+                            <p class="lead">Vista al seleccionar un estado: Al hacer click en un estado, el mapa colorea el resto de los estados según el número de turistas que llegan al estado seleccionado desde las otras entidades del país.</p>
 
                         </div>
                         <!-- /.panel-body -->
@@ -247,6 +254,8 @@
                         <div class="panel-body" style="height:610px;padding-left: 0px;overflow: auto;">
                             <h4 id="chart-bar-header2" class="text-center"></h4>
                             <div id="bar_bar_chart2"></div>
+                            <p class="lead">Vista inicial: El histograma muestra de forma numérica, del total de turistas existentes en el país, qué porcentaje proviene de cada uno de los estados.</p>
+                            <p class="lead">Vista al seleccionar un estado en el mapa: Del total de turistas que entren al estado seleccionado en el mapa, qué porcentaje proviene de cada uno de los destinos del histograma.</p>
                         </div>
                     </div>
                 </div>
