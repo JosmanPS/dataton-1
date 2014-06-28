@@ -12,8 +12,9 @@ def main():
 		term, score = next(english_file).split("\t")
 
 		# For simplicity, avoid phrases and use only words.
-		if len(line.split(" ")) == 1:
-			scores[ strip_accents(line)] = int(score)
+		if len(line.split(" ")) == 2:
+			word, score2 = line.split(" ")
+			scores[ strip_accents(word)] = int(score)
 
 	for key in scores.keys():
 		print key + "\t" + str(scores[key])
